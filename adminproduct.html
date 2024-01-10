@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/VkBZVg7d/Favicon-Rincon-de-Cuba-Fondo-Blanco.png"/>
+    <title>Productos</title>
+    <style>
+      /* Estilo CSS para Bootstrap 5 Productos empresarial */
+
+/* Variables de colores */
+:root {
+  --color-primary: #0d6efd;
+  --color-secondary: #f8f9fa;
+  --color-tertiary: #212529;
+}
+
+/* Fuente personalizada */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--color-secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--color-primary);
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+/* Estilos del formulario */
+.form-label {
+  color: var(--color-tertiary);
+  font-weight: bold;
+}
+
+.form-control {
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+#product-urls {
+  height: 100px;
+}
+
+#product-name,
+#product-price,
+#product-volume {
+  width: 80%;
+}
+
+.btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.1);
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  transform: scale(1.1);
+}
+
+/* Estilos de la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border: 1px solid var(--color-tertiary);
+  text-align: center;
+}
+
+.table th {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.table td img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.table td img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+.table td a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.table td a:hover {
+  color: #0b5ed7;
+}
+
+
+/* Estilos de los productos */
+.produto {
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.produto__img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.produto__img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+.productDescription {
+  padding: 10px;
+  background-color: var(--color-secondary);
+}
+
+.produto__title {
+  color: var(--color-tertiary);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.produto__price {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.produto__icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--color-primary);
+  font-size: 2rem;
+}
+
+.produto__icon:hover {
+  color: #0b5ed7;
+}
+/* Estilos para el logo */
+.logo {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+}
+
+/* Estilos para el título */
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el subtítulo */
+.subtitle {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--color-secondary);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+
+.product-item {
+  display: none;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto; /* Ajusta esto según tus necesidades */
+    gap: 10px; /* Espacio entre los elementos de la cuadrícula */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+  <div class="hm-header">
+
+    <div class="container">
+        <div class="header-menu">
+
+            <div class="hm-logo">
+                <a href="./inicio.html">
+                    <img src="https://i.postimg.cc/HnLxDr2M/logo-home-master-store.png" alt="">
+                </a>
+            </div>
+
+            <nav class="hm-menu">
+                <ul>
+                
+                    
+                    <li><a href="./contacto.html">Contacto</a></li>
+                    <li><a href="./index.html">Registro</a></li>
+                </ul>
+
+
+                
+
+                <div class="icon-menu">
+                    <button type="button"><i class="fas fa-bars"></i></button>
+                </div>
+
+            </nav>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- =================================
+   HEADER MENU Movil
+================================== -->
+<div class="header-menu-movil">
+    <button class="cerrar-menu"><i class="fas fa-times"></i></button>
+    <ul>
+       
+        <li><a href="./nosotros.html">Nosotros</a></li>
+        <li><a href="./contacto.html">Contacto</a></li>
+        <li><a href="./index.html">Registro</a></li>
+    </ul>
+</div>
+<div>
+    
+  <h1 class="title">Productos Rincón de Cuba </h1>  
+  </div>     
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" style="background-color: #333; padding: 20px; color: white; min-height: 100vh;">
+            <h1 class="text-center my-4"></h1>
+            <form id="product-form" class="mb-4">
+                <div class="mb-3">
+                    <label for="product-urls " class="form-label text-white">URLs de las imágenes</label>
+                    <textarea class="form-control " id="product-urls" placeholder="https://example.com/image1.jpg\nhttps://example.com/image2.jpg"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="product-name" class="form-label text-white">Nombre del producto</label>
+                    <input type="text" class="form-control" id="product-name" placeholder="Aceite">
+                </div>
+                <div class="mb-3">
+                    <label for="product-price" class="form-label text-white">Precio del producto</label>
+                    <input type="number" class="form-control" id="product-price" placeholder="3.50" step="0.01" min="0">
+                </div>
+                <div class="mb-3">
+                    <label for="product-volume" class="form-label text-white">Volumen del producto</label>
+                    <input type="text" class="form-control" id="product-volume" placeholder="1 Litro">
+                </div>
+                <div class="grid-container">
+                    <button type="submit" class="btn btn-primary grid-item">Agregar producto</button>
+                    <button id="create-multiple-products" class="btn btn-primary grid-item">Crear múltiples productos</button>
+                    <button id="copy-selected-products" class="btn btn-primary grid-item">Copiar productos seleccionados</button>
+                    <button id="delete-all" class="btn btn-danger grid-item">Borrar todos los productos</button>
+                </div>
+            </form>
+            <div class="mb-3">
+                <label for="search" class="form-label text-white">Buscar producto por nombre</label>
+                <input type="text" class="form-control" id="search" placeholder="Nombre del producto">
+            </div>
+            <button id="search-button" class="btn btn-primary ">Buscar por nombre</button>
+            <div class="mb-3">
+                <label for="search-url" class="form-label text-white">Buscar producto por URL</label>
+                <input type="text" class="form-control" id="search-url" placeholder="URL de la imagen del producto">
+            </div>
+            <button id="search-url-button" class="btn btn-primary">Buscar por URL</button>
+            <div id="product-container" class="d-flex flex-wrap justify-content-center">
+            </div>
+            <button onclick="downloadBackup()">Descargar copia de seguridad</button>
+            <input type="file" id="upload-backup">
+        </div>
+        <div class="col-md-8 offset-md-1">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                      <th scope="col">
+                        <input type="checkbox" id="select-all"> Seleccionar
+                        <span id="selected-count"></span>
+                    </th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Volumen</th>
+                    <th scope="col">Acciones</th>
+                    </thead>
+                    <tbody id="product-table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" id="product-modal">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <img id="product-modal-image" src="" class="img-fluid">
+          </div>
+         
+      </div>
+  </div>
+</div>
+
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+    <script>
+
+      
+document.addEventListener('DOMContentLoaded', () => {
+    const productForm = document.getElementById('product-form');
+    const productTable = document.getElementById('product-table');
+    const selectAllCheckbox = document.getElementById('select-all');
+    const selectedCountElement = document.getElementById('selected-count');
+
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+    let editIndex = null;
+
+    const renderProducts = (productsToRender, onlySelected = false) => {
+        productTable.innerHTML = '';
+        productsToRender.forEach((product, i) => {
+            if (!onlySelected || document.querySelectorAll('.select-product')[i].checked) {
+                productTable.innerHTML += `
+                    <tr>
+                        <td><input type="checkbox" class="select-product" data-index="${i}"></td>
+                        <td><img src="${product.url}" class="img-thumbnail" width="50" height="50"></td>
+                        <td>${product.name}</td>
+                        <td>$${product.price}</td>
+                        <td>${product.volume}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm edit" data-index="${i}">Editar</button>
+                            <button class="btn btn-danger btn-sm delete" data-index="${i}">Borrar</button>
+                            <button class="btn btn-success btn-sm copy" data-index="${i}">Copiar</button>
+                        </td>
+                    </tr>
+                `;
+            }
+        });
+        document.querySelectorAll('.select-product').forEach(checkbox => {
+            checkbox.addEventListener('change', updateSelectedCount);
+        });
+    };
+
+    const updateSelectedCount = () => {
+        const selectedCount = document.querySelectorAll('.select-product:checked').length;
+        selectedCountElement.textContent = ` (${selectedCount})`;
+    };
+
+    productForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const product = {
+            url: document.getElementById('product-urls').value,
+            name: document.getElementById('product-name').value,
+            price: document.getElementById('product-price').value,
+            volume: document.getElementById('product-volume').value
+        };
+        if (editIndex === null) {
+            products.push(product);
+        } else {
+            products[editIndex] = product;
+            editIndex = null;
+        }
+        localStorage.setItem('products', JSON.stringify(products));
+        renderProducts(products);
+        productForm.reset();
+    });
+
+    document.getElementById('create-multiple-products').addEventListener('click', () => {
+        const urls = document.getElementById('product-urls').value.split('\n');
+        urls.forEach((url, i) => {
+            const product = {
+                id: i + 1,
+                url: url,
+                name: 'Producto ' + (i + 1),
+                price: (i + 1) * 10,
+                volume: '1 Litro'
+            };
+            products.push(product);
+        });
+        localStorage.setItem('products', JSON.stringify(products));
+        renderProducts(products);
+    });
+
+    document.getElementById('search-button').addEventListener('click', () => {
+        const searchValue = document.getElementById('search').value.toLowerCase();
+        const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchValue));
+        renderProducts(filteredProducts);
+    });
+
+    document.getElementById('search-url-button').addEventListener('click', () => {
+        const searchValue = document.getElementById('search-url').value.toLowerCase();
+        const filteredProducts = products.filter(product => product.url.toLowerCase().includes(searchValue));
+        renderProducts(filteredProducts);
+    });
+
+    document.getElementById('delete-all').addEventListener('click', () => {
+        products = [];
+        localStorage.setItem('products', JSON.stringify(products));
+        renderProducts(products);
+    });
+
+    selectAllCheckbox.addEventListener('change', (e) => {
+        const isChecked = e.target.checked;
+        document.querySelectorAll('.select-product').forEach(checkbox => {
+            checkbox.checked = isChecked;
+        });
+        updateSelectedCount();
+    });
+
+    document.getElementById('copy-selected-products').addEventListener('click', () => {
+        let productCodes = '';
+        document.querySelectorAll('.select-product:checked').forEach(checkbox => {
+            const index = checkbox.dataset.index;
+            const product = products[index];
+            productCodes += `
+                <div class="product-item card">
+                    <div class="p-portada">
+                        <a href="#" class="add-to-cart">
+                            <img src="${product.url}" class="card-img-top" alt="">
+                        </a>
+                        <span class="stin stin-new">${product.volume}</span>
+                    </div>
+                    <div class="p-info card-title">
+                        <a href=""> <h3>${product.name}</h3></a>
+                        <div class="precio">
+                            <span class="product-price">$${product.price}us</span>
+                        </div>
+                        <a class="hm-btn btn-primary  uppercase add-to-cart">AGREGAR AL CARRITO</a>
+                    </div>
+                </div>
+            `;
+        });
+        navigator.clipboard.writeText(productCodes);
+    });
+
+    productTable.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete')) {
+            const index = e.target.dataset.index;
+            products.splice(index, 1);
+            localStorage.setItem('products', JSON.stringify(products));
+            renderProducts(products);
+        }
+
+        if (e.target.classList.contains('edit')) {
+            const index = e.target.dataset.index;
+            const product = products[index];
+            document.getElementById('product-urls').value = product.url;
+            document.getElementById('product-name').value = product.name;
+            document.getElementById('product-price').value = product.price;
+            document.getElementById('product-volume').value = product.volume;
+            editIndex = index;
+        }
+
+        if (e.target.classList.contains('img-thumbnail')) {
+            const imageUrl = e.target.src;
+            document.getElementById('product-modal-image').src = imageUrl;
+            new bootstrap.Modal(document.getElementById('product-modal')).show();
+        }
+    });
+
+    renderProducts(products);
+    updateSelectedCount();
+});
+document.getElementById('download-backup-button').addEventListener('click', downloadBackup);
+
+
+
+    </script>
+</body>
+</html>
