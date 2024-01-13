@@ -1,6 +1,3 @@
-
-//----------------------------------------------------------------------------------------------------------------------------------
-
 function generarCupon() {
   var longitud = 8; // Reducimos la longitud a 8 porque añadiremos 'r' al principio y '10' al final
   var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -222,7 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
       decreaseQuantity(productName);
     }
   });
-//----------------------------------------------------------------------------------------------------------------------------------
+
+
+
   const sendToWhatsApp = () => {
     const cartItems = document.querySelectorAll('.cart-item');
     let cartProducts = '';
@@ -262,9 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const sendButton = document.querySelector('.btn-primary[type="submit"]');
   sendButton.addEventListener('click', sendToWhatsApp);
 
-//----------------------------------------------------------------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------------------------------------------------------------
 
   const increaseQuantity = (productName) => {
     cartItems[productName].quantity++;
@@ -303,9 +300,9 @@ if(localStorage.getItem('visitCount')) {
     document.getElementById('visit-count').textContent = `¡Bienvenido! Esta es tu segunda visita.`;
   }
 
-  if (count == 2) {
+  if (count == 15) {
     // Activar el modal
-    var myModal = new bootstrap.Modal(document.getElementById('productModalx'), {});
+    var myModal = new bootstrap.Modal(document.getElementById('modalnewsLetter'), {});
     myModal.show();
 
     //--------------------------------------------------------------------
@@ -340,6 +337,28 @@ function resetCounter() {
     alert("El código personal ingresado no es correcto.");
   }
 } 
+// Selecciona todos los elementos que tienen la clase add-to-cart
+var elementos = document.querySelectorAll(".add-to-modal");
+
+// Recorre cada elemento y añade un evento de clic
+elementos.forEach(function(elemento) {
+  elemento.addEventListener("click", function(evento) {
+    // Evita el comportamiento por defecto del enlace
+    evento.preventDefault();
+    // Obtiene la imagen del producto
+    var imagen = elemento.querySelector("img");
+    // Obtiene el atributo src de la imagen
+    var src = imagen.getAttribute("src");
+    // Obtiene el modal por su id
+    var modal = document.getElementById("product-modal");
+    // Obtiene la imagen del modal por su id
+    var modalImagen = document.getElementById("product-modal-image");
+    // Asigna el src de la imagen del producto al src de la imagen del modal
+    modalImagen.setAttribute("src", src);
+    // Muestra el modal usando el método modal de Bootstrap
+    $(modal).modal("show");
+  });
+});
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
