@@ -148,7 +148,7 @@
                                 <li><div><a href="./registro.html">Noticias y Ofertas</a></div></li>
                             <li><a href="./nosotros.html">Nosotros</a></li>
                             <li><a href="./contacto.html">Contacto</a></li>
-                           
+                            
                             <!-- Menú desplegable -->
                             
                         </ul>
@@ -178,10 +178,10 @@
         <div class="header-menu-movil">
             <button class="cerrar-menu"><i class="fas fa-times"></i></button>
             <ul>
-                <li><a href="./registro,html">Noticias y Ofertas</a></li>
+                <li><a href="./registro.html">Noticias y Ofertas</a></li>
                 <li><a href="./nosotros.html">Nosotros</a></li>
                 <li><a href="./contacto.html">Contacto</a></li>
-              
+                
                 
            
             </ul>
@@ -319,7 +319,8 @@
 
   <!-- ModalProduct 2 -->
  
-         
+ 
+    
   <!-- =================================
            MODAL DE CARRITO DE COMPRAS
         ================================== -->
@@ -525,7 +526,16 @@
                     </li>  -->
 
                 </ul>
-
+                <div class="modal" tabindex="-1" id="product-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <img id="product-modal-image" src="" class="img-fluid">
+                            </div>
+                           
+                        </div>
+                    </div>
+                  </div>
                 <!-- CONTENIDO DE LOS TABS -->
                 <!-- Alimentos -->
                 <div class="tabs-content" data-aos="fade-up">
@@ -533,16 +543,33 @@
                     <div class="grid-product">
 
 
-                        
+                                  
+                        <div class="product-item card">
+                            <div class="p-portada">
+                                <a href="#" class="add-to-modal">
+                                    <img src="https://i.postimg.cc/G204BNxg/Arroz-Grano-Largo-El-Pozo-02-87e8bc6c-a40c-4465-a91b-bfdd246f9e1a-1024x1024-2x.webp" class="card-img-top" alt="">
+                                </a>
+                                <span class="stin stin-oferta">5 Libras</span>
+                            </div>
+
+                            <div class="p-info card-title">
+                               <a href=""> <h3>Arroz Importado</h3></a>
+                                <div class="precio">
+                                    <span class="product-price">$6.00us</span>
+                                </div>
+                                <a class="hm-btn btn-primary  uppercase add-to-cart">AGREGAR AL CARRITO</a>
+                            </div>
+
+                        </div>
 
                         
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="#" class="add-to-cart">
-                                    <img src="https://i.postimg.cc/HnLVpn9r/Aceite-3.jpg" class="card-img-top" alt="">
+                                <a href="#" class="add-to-modal">
+                                    <img src="https://i.postimg.cc/ZRHWtppk/Aceite-de-1-L.jpg" class="card-img-top" alt="">
                                 </a>
-                                <span class="stin stin-new">1 Litro</span>
+                                <span class="stin stin-oferta">1 Litro</span>
                             </div>
 
                             <div class="p-info card-title">
@@ -557,7 +584,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="#" class="add-to-cart" >
+                                <a href="#" class="add-to-modal" >
                                     <img src="https://i.postimg.cc/Vv2X5Hvm/603ebddacf623246118940.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">5 Libras</span>
@@ -575,10 +602,10 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="" class="add-to-cart">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/rFspmtLZ/Frijoles-Negros.jpg" class="card-img-top" alt="">
                                 </a>
-                                <span class="stin stin-new">5 Libras</span>
+                                <span class="stin stin-oferta">5 Libras</span>
                             </div>
 
                             <div class="p-info">
@@ -593,7 +620,25 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="" class="add-to-cart">
+                                <a href="" class="add-to-modal">
+                                    <img src="https://i.postimg.cc/BZKvny2m/paquete-de-pollo-Carnico-Alimento.jpg" class="card-img-top" alt="">
+                                    <span class="stin stin-new">10 Libras</span>
+                                </a>
+                            </div>
+
+                            <div class="p-info">
+                               <a href=""> <h3>Hamburguesas</h3><h3></h3></a>
+                                <div class="precio">
+                                    <span>$18.00us</span>
+                                </div>
+                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
+                            </div>
+
+                        </div>
+
+                        <div class="product-item card">
+                            <div class="p-portada">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/9fY21Whq/hamburguesas1.jpg" class="card-img-top" alt="">
                                     <span class="stin stin-new">10 Unidades</span>
                                 </a>
@@ -608,9 +653,11 @@
                             </div>
 
                         </div>
+
+
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/cLqNSK1n/Chorizo-pizza.jpg" class="card-img-top" alt="">
                                 </a>
                             </div>
@@ -627,7 +674,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/MKq8fNCY/salchicas.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">10 Unidades</span>
@@ -644,7 +691,7 @@
                         </div>
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/wvwjbHYg/CAlton-de-huevos.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">30 Unidades</span>
@@ -653,7 +700,7 @@
                             <div class="p-info">
                                <a href=""> <h3>Huevos</h3><h3></h3></a>
                                 <div class="precio">
-                                    <span>$12.00us</span>
+                                    <span>$13.00us</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
                             </div>
@@ -673,7 +720,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/VLWm7mqT/Pomo-Un-litro-Cola.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">1.5L</span>
@@ -682,7 +729,7 @@
                             <div class="p-info">
                                <a href=""> <h3>Refresco de Cola</h3></a>
                                 <div class="precio">
-                                    <span>$2.75us</span>
+                                    <span>$3.00us</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
                             </div>
@@ -691,7 +738,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/G3kC2d52/Refresco-6-unidades.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">6 Unidades</span>
@@ -709,7 +756,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/V6HxrnXG/cerveza-cristal.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">24 Unidades</span>
@@ -727,7 +774,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/CKnPPX8N/cristal-1-1.png" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">1 unidad</span>
@@ -745,7 +792,25 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
+                                    <img src="https://i.postimg.cc/KjcN3RZY/cerveza-shekels-33cl-mlc-45-vol.png" class="card-img-top" alt="">
+                                </a>
+                                <span class="stin stin-new">1 unidad</span>
+                            </div>
+
+                            <div class="p-info">
+                               <a href=""> <h3>Cerveza Importada</h3></a>
+                                <div class="precio">
+                                    <span>$0.80us</span>
+                                </div>
+                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
+                            </div>
+
+                        </div>
+
+                        <div class="product-item card">
+                            <div class="p-portada">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/tJc9j8rg/Cerveza-Coprove.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">1 unidad</span>
@@ -764,7 +829,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/1zn2N3pD/7461063094796-kymxyqzr1lcqmzwb.webp" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">400ml</span>
@@ -782,7 +847,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/prFWXjWK/Imagen-de-Whats-App-2024-01-01-a-las-11-41-19-5f2fa1d8.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">12 Unidades</span>
@@ -800,14 +865,14 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/ZKVXBRFT/Wiskey.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">Wiskey</span>
                             </div>
 
                             <div class="p-info">
-                               <a href=""> <h3>Chanceler</h3></a>
+                               <a href=""> <h3>Chanceller</h3></a>
                                 <div class="precio">
                                     <span>$6.00us</span>
                                 </div>
@@ -825,9 +890,27 @@
 
                     <div class="grid-product">
 
+                        <div class="product-item card">
+                            <div class="p-portada">
+                                <a href="" class="add-to-modal">
+                                    <img src="https://i.postimg.cc/qvM2czCf/Dulce-de-gauallaba-Confituras.png" class="card-img-top" alt="">
+                                </a>
+                              
+                            </div>
+
+                            <div class="p-info">
+                               <a href=""> <h3>Dulce de guayaba</h3></a>
+                                <div class="precio">
+                                    <span>$1.00us</span>
+                                </div>
+                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
+                            </div>
+
+                        </div>
+
                        <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/prWmrNYY/Biscocho-normal.jpg" class="card-img-top" alt="">
                                 </a>
                               
@@ -836,7 +919,7 @@
                             <div class="p-info">
                                <a href=""> <h3>Biscochos</h3></a>
                                 <div class="precio">
-                                    <span>$2.75us</span>
+                                    <span>$0.50us</span>
                                 </div>
                                 <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
                             </div>
@@ -845,7 +928,24 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
+                                    <img src="https://i.postimg.cc/sgSCRdSr/GAlletas-Marias-Confitura.webp" class="card-img-top" alt="">
+                                </a>
+                            </div>
+
+                            <div class="p-info">
+                               <a href=""> <h3>Galletas Maria</h3></a>
+                                <div class="precio">
+                                    <span>$2.00us</span>
+                                </div>
+                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
+                            </div>
+
+                        </div>
+
+                        <div class="product-item card">
+                            <div class="p-portada">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/3x4ddFp6/Bolitas-de-pan-de-ajo.jpg" class="card-img-top" alt="">
                                 </a>
                             </div>
@@ -862,7 +962,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/7Zwqy190/Chicharron-de-espuma-2.jpg" class="card-img-top" alt="">
                                 </a>
                             </div>
@@ -879,7 +979,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/qqxZcKKH/dulce-de-leche-con-galletas-3.jpg" class="card-img-top" alt="">
                                 </a>
                             </div>
@@ -896,7 +996,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/0jYht3L3/Dulce-de-guayaba-con-mano.jpg" class="card-img-top" alt="">
                                 </a>
                             </div>
@@ -913,7 +1013,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/SRGkXJNJ/Imagen_de_WhatsApp_2023-07-25_a_las_00.14.25.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-new">4 Litros</span>
@@ -931,7 +1031,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/ZqP7z3fB/paquete_de_galleta_queque_o_de_chocolate.jpg" class="card-img-top" alt="">
                                 </a>
                                
@@ -949,7 +1049,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/ZKg67RxG/Galletas_de_Chorizo.jpg" class="card-img-top" alt="">
                                 </a>
                                
@@ -967,7 +1067,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="https://i.postimg.cc/ryjBr6N0/MentaPlus_verde.jpg" class="card-img-top" alt="">
                                 </a>
                                
@@ -994,7 +1094,7 @@
 
                       <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="img/1.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-oferta">Oferta</span>
@@ -1013,7 +1113,7 @@
 
                         <div class="product-item card">
                             <div class="p-portada">
-                                <a href="">
+                                <a href="" class="add-to-modal">
                                     <img src="img/2.jpg" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-oferta">Oferta</span>
