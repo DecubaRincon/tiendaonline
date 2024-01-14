@@ -300,9 +300,9 @@ if(localStorage.getItem('visitCount')) {
     document.getElementById('visit-count').textContent = `¡Bienvenido! Esta es tu segunda visita.`;
   }
 
-  if (count == 15) {
+  if (count == 3) {
     // Activar el modal
-    var myModal = new bootstrap.Modal(document.getElementById('modalnewsLetter'), {});
+    var myModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
     myModal.show();
 
     //--------------------------------------------------------------------
