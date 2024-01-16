@@ -355,7 +355,7 @@ elementos.forEach(function(elemento) {
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
-$(document).ready(function() {
+/*$(document).ready(function() {
   $('.icon-link').on('click', function(e) {
       e.preventDefault(); // Evita que el enlace se siga como un enlace normal
 
@@ -372,5 +372,32 @@ $(document).ready(function() {
       window.open(twitterUrl, '_blank');
       window.open(whatsappUrl, '_blank');
   });
+});*/
+// Primero, seleccionamos todos los elementos del producto
+var productos = document.querySelectorAll('.product-item');
+
+// Luego, para cada producto...
+productos.forEach(function(producto, index) {
+    // Obtenemos los detalles del producto
+    var nombre = producto.querySelector('.p-info h3').innerText;
+    var imagen = producto.querySelector('.p-portada img').src;
+    var precio = producto.querySelector('.precio .product-price').innerText;
+
+    // Agregamos un evento click al icono de compartir
+    producto.querySelector('.bi-share').addEventListener('click', function() {
+        // Generamos las meta etiquetas para ese producto
+        var metaEtiquetas = `
+            <meta property="og:title" content="${nombre}" />
+            <meta property="og:image" content="${imagen}" />
+            <meta property="og:description" content="${precio}" />
+        `;
+        document.head.innerHTML += metaEtiquetas;
+
+        // Aquí puedes agregar el código para compartir el producto en las redes sociales
+        // Por ejemplo, para compartir en Facebook podrías hacer algo como esto:
+        var url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+        window.open(url, '_blank');
+    });
 });
+
 
