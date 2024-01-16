@@ -285,10 +285,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //-------------------------------------------------------------------------------------------------------
-// Código personal predefinido
-var predefinedCode = "Pinga";
 
-// Verificar si el contador de visitas ya existe en el almacenamiento local
+// funciones con el contador
+
 if(localStorage.getItem('visitCount')) {
   let count = parseInt(localStorage.getItem('visitCount'));
   count++;
@@ -301,25 +300,16 @@ if(localStorage.getItem('visitCount')) {
   }
 
   if (count == 3) {
-    // Activar el modal
-    var myModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
-    myModal.show();
-
-    //--------------------------------------------------------------------
-
-   } else if (count == 4) {
+    // Redirige a la página de registro en la tercera visita
+    window.location.href = './index12.html';
+  } else if (count == 4) {
     // Activar el otro modal en la cuarta visita
-    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagenx'), {});
+    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
     otroModal.show();
-
-  //----------------------------------------------------------------------
-} else if (count == 6) {
-  // Activar el otro modal en la cuarta visita
-  var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalx'), {});
-  otroModal.show();
-
-//----------------------------------------------------------------------
-    
+  } else if (count == 6) {
+    // Activar el otro modal en la cuarta visita
+    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalx'), {});
+    otroModal.show();
   }
 } else {
   localStorage.setItem('visitCount', 1);
@@ -336,7 +326,10 @@ function resetCounter() {
   } else {
     alert("El código personal ingresado no es correcto.");
   }
-} 
+}
+
+//---------------------------------------------------------------------------
+
 // Selecciona todos los elementos que tienen la clase add-to-cart
 var elementos = document.querySelectorAll(".add-to-modal");
 
