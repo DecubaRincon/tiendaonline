@@ -23,8 +23,12 @@
 
     <!-- Bootstrap 5.3 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+
 
     <link rel="icon" type="image/png" href="https://i.postimg.cc/VkBZVg7d/Favicon-Rincon-de-Cuba-Fondo-Blanco.png"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 
     <link
   rel="stylesheet"
@@ -38,9 +42,30 @@
     <link rel="stylesheet" href="css/estilos.css">
    <!-- <link rel="stylesheet" href="css/estilomodal.css">-->
 
-</head>
+
  
 <style>
+.icon-link {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #f5f5f5; /* Cambia esto al color que prefieras */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    color: #333; /* Cambia esto al color que prefieras para el icono */
+    text-decoration: none;
+}
+
+.icon-link:hover {
+    background-color: #e0e0e0; /* Cambia esto al color que prefieras para el hover */
+}
+
+
+.icon-link {
+  font-family: "bootstrap-icons";
+}
+
 /* Estilo CSS para reducir la imagen del modal */
 
 /* Selecciona la imagen dentro del modal */
@@ -114,7 +139,11 @@
 
 
 </style>
-<body>
+<meta property="og:title" content="Arroz Importado">
+    <meta property="og:description" content="$6.00us">
+    <meta property="og:image" content="https://i.postimg.cc/G204BNxg/Arroz-Grano-Largo-El-Pozo-02-87e8bc6c-a40c-4465-a91b-bfdd246f9e1a-1024x1024-2x.webp" />
+</head>
+    <body>
 
     <div class="hm-wrapper">
 
@@ -411,7 +440,7 @@
             <div class="img-banner">
                 <img src="https://i.postimg.cc/c18dr6y2/banner-1.jpg" alt="">
             </div>
-            <a href=""></a>
+            <a href="./index.html"></a>
         </div>
         <!-- Añade este botón a tu HTML -->
 <!-- <button id="reset-button">Reiniciar contador</button>-->
@@ -548,15 +577,21 @@
                     <div class="grid-product">
 
 
-                                  
+
+                        
+                               
                         <div class="product-item card">
-                            <div class="p-portada">
+                            <div class="p-portada position-relative">
                                 <a href="#" class="add-to-modal">
                                     <img src="https://i.postimg.cc/G204BNxg/Arroz-Grano-Largo-El-Pozo-02-87e8bc6c-a40c-4465-a91b-bfdd246f9e1a-1024x1024-2x.webp" class="card-img-top" alt="">
                                 </a>
                                 <span class="stin stin-oferta">5 Libras</span>
+                                <!-- Aquí es donde agregas el icono de compartir -->
+                                <a href="#" class="icon-link position-absolute top-0 end-0">
+                                    <i class="bi bi-share"></i>
+                                </a>
                             </div>
-
+                    
                             <div class="p-info card-title">
                                <a href=""> <h3>Arroz Importado</h3></a>
                                 <div class="precio">
@@ -564,8 +599,8 @@
                                 </div>
                                 <a class="hm-btn btn-primary  uppercase add-to-cart">AGREGAR AL CARRITO</a>
                             </div>
-
                         </div>
+                        
 
                         
 
@@ -1341,6 +1376,8 @@
 
   
 //--------------------------------------------------------
+
+
 // Añade este código a tu JavaScript
 document.getElementById('reset-button').addEventListener('click', function() {
   localStorage.setItem('visitCount', 0);
@@ -1348,6 +1385,8 @@ document.getElementById('reset-button').addEventListener('click', function() {
   // Actualiza la página
   location.reload();
 });
+//----------------------------------------------------------
+
 
  </script>
 
