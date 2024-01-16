@@ -355,3 +355,22 @@ elementos.forEach(function(elemento) {
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
+$(document).ready(function() {
+  $('.icon-link').on('click', function(e) {
+      e.preventDefault(); // Evita que el enlace se siga como un enlace normal
+
+      var url = window.location.href; // obtén la URL del producto
+      var title = document.title; // obtén el título del producto
+
+      // URLs de compartir para diferentes redes sociales
+      var facebookUrl = 'https://www.facebook.com/sharer.php?u=' + url;
+      var twitterUrl = 'https://twitter.com/share?url=' + url + '&text=' + title;
+      var whatsappUrl = 'https://api.whatsapp.com/send?text=' + title + ' ' + url;
+
+      // abre las URLs de compartir en una nueva ventana
+      window.open(facebookUrl, '_blank');
+      window.open(twitterUrl, '_blank');
+      window.open(whatsappUrl, '_blank');
+  });
+});
+
