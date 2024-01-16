@@ -373,36 +373,37 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-$(document).ready(function() {
-  $('.icon-link').on('click', function(e) {
-      e.preventDefault(); // Evita que el enlace se siga como un enlace normal
+// Primero, seleccionamos todos los elementos de producto
+let productItems = document.querySelectorAll('.product-item');
 
-      // Obtenemos los detalles del producto
-      var producto = $(this).closest('.product-item');
-      var nombre = producto.find('.p-info h3').text();
-      var imagen = producto.find('.p-portada img').attr('src');
-      var precio = producto.find('.precio span').text();
+// Luego, iteramos sobre cada elemento de producto
+productItems.forEach((item) => {
+    // Obtenemos los detalles del producto
+    let productName = item.querySelector('.p-info h3').innerText;
+    let productImage = item.querySelector('.p-portada img').src;
+    let productPrice = item.querySelector('.product-price').innerText;
 
-      // Generamos las meta etiquetas para ese producto
-      var metaEtiquetas = `
-          <meta property="og:title" content="${nombre}" />
-          <meta property="og:image" content="${imagen}" />
-          <meta property="og:description" content="${precio}" />
-      `;
-      $('head').append(metaEtiquetas);
+    // Buscamos el botón de compartir dentro de este elemento de producto
+    let shareBtn = item.querySelector('.icon-link');
 
-      var url = window.location.href; // obtén la URL del producto
+    // Agregamos un evento click al botón de compartir
+    shareBtn.addEventListener('click', function(event) {
+        // Prevenimos la acción por defecto
+        event.preventDefault();
 
-      // URLs de compartir para diferentes redes sociales
-      var facebookUrl = 'https://www.facebook.com/sharer.php?u=' + url;
-      var twitterUrl = 'https://twitter.com/share?url=' + url + '&text=' + nombre;
-      var whatsappUrl = 'https://api.whatsapp.com/send?text=' + nombre + ' ' + url;
-
-      // abre las URLs de compartir en una nueva ventana
-      window.open(facebookUrl, '_blank');
-      window.open(twitterUrl, '_blank');
-      window.open(whatsappUrl, '_blank');
-  });
+        // Verificamos si la API Web Share está disponible
+        if (navigator.share) {
+            // Usamos la API Web Share para compartir el producto
+            navigator.share({
+                title: productName,
+                text: 'Mira este producto: ' + productName + ' por solo ' + productPrice,
+                url: productImage
+            }).then(() => console.log('Contenido compartido!'))
+            .catch((error) => console.log('Hubo un error al compartir', error));
+        } else {
+            // Si la API Web Share no está disponible, mostramos un mensaje
+            alert('Lo siento, la función de compartir no está disponible en tu navegador.');
+        }
+    });
 });
-
 
