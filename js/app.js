@@ -381,10 +381,12 @@ productos.forEach(function(producto, index) {
     // Obtenemos los detalles del producto
     var nombre = producto.querySelector('.p-info h3').innerText;
     var imagen = producto.querySelector('.p-portada img').src;
-    var precio = producto.querySelector('.precio .product-price').innerText;
+    var precio = producto.querySelector('.precio span').innerText;
 
     // Agregamos un evento click al icono de compartir
-    producto.querySelector('.bi-share').addEventListener('click', function() {
+    producto.querySelector('.bi-share').addEventListener('click', function(event) {
+        event.preventDefault(); // Previene la acción por defecto del enlace
+
         // Generamos las meta etiquetas para ese producto
         var metaEtiquetas = `
             <meta property="og:title" content="${nombre}" />
