@@ -373,33 +373,35 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-// Primero, seleccionamos todos los elementos del producto
-var productos = document.querySelectorAll('.product-item');
+$(document).ready(function() {
+  $('.icon-link').on('click', function(e) {
+      e.preventDefault(); // Evita que el enlace se siga como un enlace normal
 
-// Luego, para cada producto...
-productos.forEach(function(producto, index) {
-    // Obtenemos los detalles del producto
-    var nombre = producto.querySelector('.p-info h3').innerText;
-    var imagen = producto.querySelector('.p-portada img').src;
-    var precio = producto.querySelector('.precio span').innerText;
+      // Obtenemos los detalles del producto
+      var producto = $(this).closest('.product-item');
+      var nombre = producto.find('.p-info h3').text();
+      var imagen = producto.find('.p-portada img').attr('src');
+      var precio = producto.find('.precio span').text();
 
-    // Agregamos un evento click al icono de compartir
-    producto.querySelector('.bi-share').addEventListener('click', function(event) {
-        event.preventDefault(); // Previene la acción por defecto del enlace
+      // Generamos las meta etiquetas para ese producto
+      var metaEtiquetas = `
+          <meta property="og:title" content="${nombre}" />
+          <meta property="og:image" content="${imagen}" />
+          <meta property="og:description" content="${precio}" />
+      `;
+      $('head').append(metaEtiquetas);
 
-        // Generamos las meta etiquetas para ese producto
-        var metaEtiquetas = `
-            <meta property="og:title" content="${nombre}" />
-            <meta property="og:image" content="${imagen}" />
-            <meta property="og:description" content="${precio}" />
-        `;
-        document.head.innerHTML += metaEtiquetas;
+      var url = window.location.href; // obtén la URL del producto
 
-        // Aquí puedes agregar el código para compartir el producto en las redes sociales
-        // Por ejemplo, para compartir en Facebook podrías hacer algo como esto:
-        var url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
-        window.open(url, '_blank');
-    });
+      // URLs de compartir para diferentes redes sociales
+      var facebookUrl = 'https://www.facebook.com/sharer.php?u=' + url;
+      var twitterUrl = 'https://twitter.com/share?url=' + url + '&text=' + nombre;
+      var whatsappUrl = 'https://api.whatsapp.com/send?text=' + nombre + ' ' + url;
+
+      // abre las URLs de compartir en una nueva ventana
+      window.open(facebookUrl, '_blank');
+      window.open(twitterUrl, '_blank');
+      window.open(whatsappUrl, '_blank');
+  });
 });
-
 
