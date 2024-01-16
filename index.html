@@ -181,6 +181,7 @@
                 <li><a href="./registro.html">Noticias y Ofertas</a></li>
                 <li><a href="./nosotros.html">Nosotros</a></li>
                 <li><a href="./contacto.html">Contacto</a></li>
+                <!--<li><button id="reset-button">Reiniciar contador</button></a></li>-->
                 
                 
            
@@ -245,7 +246,7 @@
         <div class="modal fade" id="anuncio-modalimagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-body">
+                    <div class="modal-body"> 
                         <!-- Aquí va tu imagen -->
                       <img src="https://i.postimg.cc/9fcg5k0v/RUJjf-TLHTMG2l-Ja2y-LPq-w.jpg" class="img-fluid" alt="Descripción de la imagen">
                     </div>
@@ -412,6 +413,9 @@
             </div>
             <a href=""></a>
         </div>
+        <!-- Añade este botón a tu HTML -->
+<!-- <button id="reset-button">Reiniciar contador</button>-->
+
         <section class="w-75 mx-auto text-center pt-3 my-lg-4" id="Intro">
             <h1 class="p-3 fs-2 border-top border-3">Elabora con nosotros tus Combos de alimentos para <span class="text-primary"> tus familiares en Cuba.</span></h1>
             <p>Bienvenido a Rincón de Cuba,<span class="text-primary"> tu destino para los mejores productos y combos de comida elaborados por usted para sus familiares en Cuba. Ofrecemos una selección exclusiva de productos y combos diseñados para satisfacer tus antojos y brindarte una auténtica experiencia. Explora nuestros productos y crea tus combos de comida a tu preferencia para tus familiares en Cuba.</span></p>
@@ -1337,6 +1341,13 @@
 
   
 //--------------------------------------------------------
+// Añade este código a tu JavaScript
+document.getElementById('reset-button').addEventListener('click', function() {
+  localStorage.setItem('visitCount', 0);
+  alert("El contador de la página se ha reiniciado.");
+  // Actualiza la página
+  location.reload();
+});
 
  </script>
 
