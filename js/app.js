@@ -301,7 +301,7 @@ if(localStorage.getItem('visitCount')) {
 
   if (count == 3) {
     // Redirige a la página de registro en la tercera visita
-    window.location.href = './index12.html';
+    window.location.href = '';
   } else if (count == 4) {
     // Activar el otro modal en la cuarta visita
     var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
