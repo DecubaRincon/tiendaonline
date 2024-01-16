@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <!-- Bootstrap 5 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/VkBZVg7d/Favicon-Rincon-de-Cuba-Fondo-Blanco.png"/>
+    <!-- Estilos personalizados -->
+    <style>
+        :root {
+  --color-primary: #f44336;
+  --color-secondary: #2196f3;
+  --color-tertiary: #ffffff;
+  --color-quaternary: #000000;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-tertiary);
+}
+
+
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .nav-link {
+            color: white;
+        }
+
+        .nav-link.active {
+            background-color: #0069d9;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+
+        .alert {
+            display: none;
+        }
+
+ /* Estilos para el logo */
+ .logo {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+}
+
+/* Estilos para el título */
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el subtítulo */
+.subtitle {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--color-secondary);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Estilo del botón primario al pasar el ratón */
+.btn-primary:hover {
+    background-color: #0069d9;
+}
+.form-check-input {
+    margin-right: 10px;
+}
+
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.postimg.cc/7hBwzkWK/Rincon-de-Cuba.png" alt="Logo" class="logo">    
+        <h1 class="title">Bienvenido a Rincón de Cuba </h1>       
+        <p class="subtitle">Regístrate para acceder a nuestros productos y ofertas</p>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" id="tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" href="#">Registro</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content" id="content">
+                    <div class="tab-pane fade show active" id="login">
+                        <form id="login-form">
+                            <div class="mb-3">
+                                <label for="email-login" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email-login" name="email-login" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-login" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password-login" name="password-login" required>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="remember-login" name="remember-login">
+                                <label class="form-check-label" for="remember-login">Recordarme</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                        </form>
+                    </div>               
+
+                    <div class="tab-pane fade" id="register">
+                        <form id="register-form">
+                            <div class="mb-3">
+                                <label for="name-register" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="name-register" name="name-register" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email-register" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email-register" name="email-register" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-register" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password-register" name="password-register" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm-register" class="form-label">Confirmar contraseña</label>
+                                <input type="password" class="form-control" id="confirm-register" name="confirm-register" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="alert alert-success mt-3" id="success-alert" role="alert">
+                    <i class="fas fa-check-circle"></i> <span id="success-message"></span>
+                </div>
+                <div class="alert alert-danger mt-3" id="error-alert" role="alert">
+                    <i class="fas fa-exclamation-circle"></i> <span id="error-message"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap 5 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Script personalizado -->
+    <script>
+    $(document).ready(function() {
+    function validateEmail(email) {
+        var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        return regex.test(email);
+    }
+
+    function showSuccess(message) {
+        $("#success-message").text(message);
+        $("#success-alert").show();
+        $("#error-alert").hide();
+    }
+
+    function showError(message) {
+        $("#error-message").text(message);
+        $("#error-alert").show();
+        $("#success-alert").hide();
+    }
+
+    function clearFields() {
+        $("#login-form")[0].reset();
+        $("#register-form")[0].reset();
+    }
+
+    function saveUser(name, email, password) {
+        var user = {
+            name: name,
+            email: email,
+            password: password
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+    }
+
+    function getUser() {
+        var user = localStorage.getItem("user");
+        if (user) {
+            return JSON.parse(user);
+        } else {
+            return null;
+        }
+    }
+
+    function saveSession(email, remember) {
+        var session = {
+            email: email,
+            remember: remember
+        };
+        localStorage.setItem("session", JSON.stringify(session));
+    }
+
+    function getSession() {
+        var session = localStorage.getItem("session");
+        if (session) {
+            return JSON.parse(session);
+        } else {
+            return null;
+        }
+    }
+
+    function deleteSession() {
+        localStorage.removeItem("session");
+    }
+
+    function validar(usuario, contraseña) {
+        var user = getUser();
+        if (user) {
+            if (usuario == user.email && contraseña == user.password) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    $("#login-form").submit(function(e) {
+        e.preventDefault();
+        var usuario = $("#email-login").val();
+        var contraseña = $("#password-login").val();
+        var remember = $("#remember-login").prop("checked");
+        var valido = validar(usuario, contraseña);
+        if (valido) {
+            saveSession(usuario, remember);
+            showSuccess("Bienvenido " + getUser().name);
+            clearFields();
+            window.location = "./index.html";
+        } else {
+            showError("Email o contraseña inválidos");
+        }
+    });
+
+    $("#register-form").submit(function(e) {
+        e.preventDefault();
+        var name = $("#name-register").val();
+        var email = $("#email-register").val();
+        var password = $("#password-register").val();
+        var confirm = $("#confirm-register").val();
+        if (validateEmail(email)) {
+            if (password == confirm) {
+                saveUser(name, email, password);
+                clearFields();
+                $("#login-tab").tab("show");
+                showSuccess("Te has registrado con éxito");
+            } else {
+                showError("Las contraseñas no coinciden");
+            }
+        } else {
+            showError("El email no es válido");
+        }
+    });
+});
+
+document.getElementById("register-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    document.getElementById("message").textContent = "Registrando..";
+    document.getElementById("message").style.display = "block";
+    document.getElementById("submit-button").disabled = true;
+
+    var formData = new FormData(this);
+    var keyValuePairs = [];
+    for (var pair of formData.entries()) {
+      keyValuePairs.push(pair[0] + "=" + pair[1]);
+    }
+
+    var formDataString = keyValuePairs.join("&");
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxFgnQHLzNRbfPWYpWqBW_9sMm0X-l-4mas5XgjWxKKW2lPdFg_UJacbelq8kCiI4Kq/exec",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          name: document.getElementById("name-register").value,
+          email: document.getElementById("email-register").value,
+          password: document.getElementById("password-register").value
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then(function (response) {
+        if (response) {
+          return response;
+        } else {
+          throw new Error("Failed to submit the form.");
+        }
+      })
+      .then(function (data) {
+        document.getElementById("message").textContent =
+          "Te has registrado con éxito!";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("message").style.backgroundColor = "green";
+        document.getElementById("message").style.color = "beige";
+        document.getElementById("submit-button").disabled = false;
+        document.getElementById("register-form").reset();
+
+        setTimeout(function () {
+          document.getElementById("message").textContent = "";
+          document.getElementById("message").style.display = "none";
+        }, 2600);
+      })
+      .catch(function (error) {
+        console.error(error);
+        document.getElementById("message").textContent =
+          "Ha ocurrido un error al enviar el formulario.";
+        document.getElementById("message").style.display = "block";
+      });
+});
+
+</script>
+
+</body>
+</html>
