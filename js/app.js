@@ -382,6 +382,7 @@ productItems.forEach((item) => {
     let productName = item.querySelector('.p-info h3').innerText;
     let productImage = item.querySelector('.p-portada img').src;
     let productPrice = item.querySelector('.product-price').innerText;
+    let productUrl = item.querySelector('.p-portada a').href;
 
     // Buscamos el botón de compartir dentro de este elemento de producto
     let shareBtn = item.querySelector('.icon-link');
@@ -397,7 +398,7 @@ productItems.forEach((item) => {
             navigator.share({
                 title: productName,
                 text: 'Mira este producto: ' + productName + ' por solo ' + productPrice,
-                url: productImage
+                url: productUrl
             }).then(() => console.log('Contenido compartido!'))
             .catch((error) => console.log('Hubo un error al compartir', error));
         } else {
@@ -406,4 +407,3 @@ productItems.forEach((item) => {
         }
     });
 });
-
