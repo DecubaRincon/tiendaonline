@@ -382,7 +382,7 @@ $(document).ready(function() {
         var productPrice = productItem.find('.product-price').text();
         var productImage = productItem.find('.p-portada img').attr('src');
         var productUrl = window.location.href;
-        var productDescription = `¡Echa un vistazo a precio de este increíble producto! ${productName} por solo ${productPrice}. ¡Lo recomiendo definitavamente!`;
+        var productDescription = `¡Echa un vistazo a este increíble producto! ${productName} por solo ${productPrice}. ¡Lo recomiendo altamente!`;
 
         $('meta[property="og:title"]').attr('content', productName);
         $('meta[property="og:description"]').attr('content', productDescription);
