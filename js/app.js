@@ -373,37 +373,30 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-// Primero, seleccionamos todos los elementos de producto
-let productItems = document.querySelectorAll('.product-item');
+// Añade un evento click a todos los iconos de compartir
+let icons = document.querySelectorAll(".bi-share");
+for (let icon of icons) {
+    icon.addEventListener("click", shareProduct);
+}
 
-// Luego, iteramos sobre cada elemento de producto
-productItems.forEach((item) => {
-    // Obtenemos los detalles del producto
-    let productName = item.querySelector('.p-info h3').innerText;
-    let productImage = item.querySelector('.p-portada img').src;
-    let productPrice = item.querySelector('.product-price').innerText;
-    let productUrl = item.querySelector('.p-portada a').href;
-
-    // Buscamos el botón de compartir dentro de este elemento de producto
-    let shareBtn = item.querySelector('.icon-link');
-
-    // Agregamos un evento click al botón de compartir
-    shareBtn.addEventListener('click', function(event) {
-        // Prevenimos la acción por defecto
-        event.preventDefault();
-
-        // Verificamos si la API Web Share está disponible
-        if (navigator.share) {
-            // Usamos la API Web Share para compartir el producto
-            navigator.share({
-                title: productName,
-                text: 'Mira este producto: ' + productName + ' por solo ' + productPrice,
-                url: productUrl
-            }).then(() => console.log('Contenido compartido!'))
-            .catch((error) => console.log('Hubo un error al compartir', error));
-        } else {
-            // Si la API Web Share no está disponible, mostramos un mensaje
-            alert('Lo siento, la función de compartir no está disponible en tu navegador.');
-        }
-    });
-});
+// Define la función que comparte el producto
+function shareProduct(event) {
+    // Evita que el enlace se ejecute
+    event.preventDefault();
+    // Obtiene el elemento padre que contiene el producto
+    let product = event.target.closest(".product-item");
+    // Obtiene la imagen, el nombre y el precio del producto
+    let image = product.querySelector(".card-img-top").src;
+    let name = product.querySelector("h3").textContent;
+    let price = product.querySelector(".product-price").textContent;
+    // Crea el objeto con los datos a compartir
+    let data = {
+        title: name,
+        text: `${name} por ${price}`,
+        url: image
+    };
+    // Invoca la interfaz de compartir
+    navigator.share(data)
+        .then(() => console.log("Producto compartido"))
+        .catch((error) => console.error("Error al compartir", error));
+}
