@@ -373,30 +373,25 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-// Añade un evento click a todos los iconos de compartir
-let icons = document.querySelectorAll(".bi-share");
-for (let icon of icons) {
-    icon.addEventListener("click", shareProduct);
-}
+document.querySelectorAll('.product-item').forEach(item => {
+    const shareIcon = item.querySelector('.bi-share');
+    shareIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        const productName = item.querySelector('.p-info h3').innerText;
+        const productPrice = item.querySelector('.product-price').innerText;
+        const productImage = item.querySelector('.p-portada img').src;
+        const productUrl = window.location.href;
+        const text = `¡Echa un vistazo a este increíble producto! ${productName} por solo ${productPrice}. ¡Lo recomiendo altamente!`;
 
-// Define la función que comparte el producto
-function shareProduct(event) {
-    // Evita que el enlace se ejecute
-    event.preventDefault();
-    // Obtiene el elemento padre que contiene el producto
-    let product = event.target.closest(".product-item");
-    // Obtiene la imagen, el nombre y el precio del producto
-    let image = product.querySelector(".card-img-top").src;
-    let name = product.querySelector("h3").textContent;
-    let price = product.querySelector(".product-price").textContent;
-    // Crea el objeto con los datos a compartir
-    let data = {
-        title: name,
-        text: `${name} por ${price}`,
-        url: image
-    };
-    // Invoca la interfaz de compartir
-    navigator.share(data)
-        .then(() => console.log("Producto compartido"))
-        .catch((error) => console.error("Error al compartir", error));
-}
+        if (navigator.share) {
+            navigator.share({
+                title: productName,
+                text: text,
+                url: productUrl,
+            }).then(() => console.log('Producto compartido exitosamente'))
+            .catch((error) => console.log('Hubo un error al compartir', error));
+        } else {
+            console.log(`Tu navegador no soporta la API de Web Share.`);
+        }
+    });
+});
