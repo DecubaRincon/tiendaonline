@@ -373,7 +373,11 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-$(document).ready(function() {
+
+//----------------------------------------------------------------------------------------------------------------------------------
+
+
+/*$(document).ready(function() {
     $('.bi-share').click(function(e) {
         e.preventDefault();
 
@@ -400,5 +404,22 @@ $(document).ready(function() {
             console.log(`Tu navegador no soporta la API de Web Share.`);
         }
     });
+});*/
+
+//----------------------------------------------------------------------------------------------------------------------------------
+document.querySelectorAll('.product-item').forEach(function(item) {
+    var shareIcon = item.querySelector('.bi-share');
+    shareIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        var imgSrc = item.querySelector('.card-img-top').src;
+        var productName = item.querySelector('.p-info h3').innerText;
+        var productPrice = item.querySelector('.product-price').innerText;
+        var predefinedMessage = "¡Mira este increíble producto que encontré! " + productName + " por solo " + productPrice + ". ¡Lo recomiendo altamente!";
+        var url = 'https://decubarincon.github.io/tiendaonline/';
+        var fbShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(predefinedMessage);
+        window.open(fbShareUrl, '_blank');
+    });
 });
+
+
 
