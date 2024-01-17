@@ -373,20 +373,26 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-document.querySelectorAll('.product-item').forEach(item => {
-    const shareIcon = item.querySelector('.bi-share');
-    shareIcon.addEventListener('click', function(event) {
-        event.preventDefault();
-        const productName = item.querySelector('.p-info h3').innerText;
-        const productPrice = item.querySelector('.product-price').innerText;
-        const productImage = item.querySelector('.p-portada img').src;
-        const productUrl = window.location.href;
-        const text = `¡Echa un vistazo a este increíble producto! ${productName} por solo ${productPrice}. ¡Lo recomiendo altamente!`;
+$(document).ready(function() {
+    $('.bi-share').click(function(e) {
+        e.preventDefault();
+
+        var productItem = $(this).closest('.product-item');
+        var productName = productItem.find('.p-info h3').text();
+        var productPrice = productItem.find('.product-price').text();
+        var productImage = productItem.find('.p-portada img').attr('src');
+        var productUrl = window.location.href;
+        var productDescription = `¡Echa un vistazo a precio de este increíble producto! ${productName} por solo ${productPrice}. ¡Lo recomiendo definitavamente!`;
+
+        $('meta[property="og:title"]').attr('content', productName);
+        $('meta[property="og:description"]').attr('content', productDescription);
+        $('meta[property="og:image"]').attr('content', productImage);
+        $('meta[property="og:url"]').attr('content', productUrl);
 
         if (navigator.share) {
             navigator.share({
                 title: productName,
-                text: text,
+                text: productDescription,
                 url: productUrl,
             }).then(() => console.log('Producto compartido exitosamente'))
             .catch((error) => console.log('Hubo un error al compartir', error));
@@ -395,3 +401,4 @@ document.querySelectorAll('.product-item').forEach(item => {
         }
     });
 });
+
