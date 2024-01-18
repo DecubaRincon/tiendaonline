@@ -407,19 +407,54 @@ elementos.forEach(function(elemento) {
 });*/
 
 //----------------------------------------------------------------------------------------------------------------------------------
-document.querySelectorAll('.product-item').forEach(function(item) {
-    var shareIcon = item.querySelector('.bi-share');
-    shareIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        var imgSrc = item.querySelector('.card-img-top').src;
-        var productName = item.querySelector('.p-info h3').innerText;
-        var productPrice = item.querySelector('.product-price').innerText;
-        var predefinedMessage = "¡Mira este increíble producto que encontré! " + productName + " por solo " + productPrice + ". ¡Lo recomiendo altamente!";
-        var url = 'https://decubarincon.github.io/tiendaonline/';
-        var fbShareUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(predefinedMessage);
-        window.open(fbShareUrl, '_blank');
+// Función para agregar meta etiquetas Open Graph
+  function agregarMetaEtiquetas(producto) {
+    // Elimina las meta etiquetas existentes
+    document.querySelectorAll('meta[property^="og:"]').forEach(tag => tag.remove());
+
+    // Crea las nuevas meta etiquetas
+    const metaTags = [
+      { property: 'og:title', content: producto.nombre },
+      { property: 'og:description', content: `¡Promoción especial en ${producto.nombre} por solo $${producto.precio}!` },
+      { property: 'og:image', content: producto.imagen },
+      { property: 'og:url', content: window.location.href },
+    ];
+
+    // Agrega las meta etiquetas al head del documento
+    metaTags.forEach(tag => {
+      const metaTag = document.createElement('meta');
+      metaTag.setAttribute('property', tag.property);
+      metaTag.setAttribute('content', tag.content);
+      document.head.appendChild(metaTag);
     });
-});
+  }
 
+  // Evento de clic en el icono de compartir
+  document.querySelectorAll('.icon-link').forEach(icon => {
+    icon.addEventListener('click', function(event) {
+      event.preventDefault();
 
+      // Obtén la información del producto
+      const producto = {
+        nombre: this.closest('.product-item').querySelector('h3').innerText,
+        precio: this.closest('.product-item').querySelector('.product-price').innerText,
+        imagen: this.closest('.product-item').querySelector('img').src,
+      };
+
+      // Agrega las meta etiquetas al hacer clic en el icono de compartir
+      agregarMetaEtiquetas(producto);
+
+      // Abre la ventana de compartir
+      if (navigator.share) {
+        navigator.share({
+          title: producto.nombre,
+          text: `¡Promoción especial en ${producto.nombre} por solo ${producto.precio}!`,
+          url: window.location.href,
+        });
+      } else {
+        // Si el navegador no soporta la Web Share API, puedes agregar aquí la lógica para abrir tu propio modal de compartir.
+        alert('Tu navegador no soporta la función de compartir.');
+      }
+    });
+  });
 
