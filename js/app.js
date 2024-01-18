@@ -407,44 +407,26 @@ elementos.forEach(function(elemento) {
 });*/
 
 //----------------------------------------------------------------------------------------------------------------------------------
-function agregarMetaEtiquetas(producto) {
-    document.querySelectorAll('meta[property^="og:"]').forEach(tag => tag.remove());
+document.querySelectorAll('.product-item').forEach(item => {
+    const shareIcon = item.querySelector('.bi-share');
+    const productImage = item.querySelector('.card-img-top').src;
+    const productName = item.querySelector('.p-info h3').innerText;
+    const productPrice = item.querySelector('.product-price').innerText;
 
-    const metaTags = [
-      { property: 'og:title', content: producto.nombre },
-      { property: 'og:description', content: `¡Promoción especial en ${producto.nombre} por solo $${producto.precio}!` },
-      { property: 'og:image', content: producto.imagen },
-      { property: 'og:url', content: window.location.href },
-    ];
-
-    metaTags.forEach(tag => {
-      const metaTag = document.createElement('meta');
-      metaTag.setAttribute('property', tag.property);
-      metaTag.setAttribute('content', tag.content);
-      document.head.appendChild(metaTag);
+    shareIcon.addEventListener('click', async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: `¡Mira este producto increíble!`,
+                    text: `¡Echa un vistazo a este ${productName} que encontré por solo ${productPrice}!`,
+                    url: productImage,
+                });
+                console.log('Producto compartido exitosamente');
+            } catch (err) {
+                console.error('Error compartiendo el producto', err);
+            }
+        } else {
+            console.log('La API de Web Share no está soportada en tu navegador');
+        }
     });
-  }
-
-  document.querySelectorAll('.icon-link').forEach(icon => {
-    icon.addEventListener('click', function(event) {
-      event.preventDefault();
-
-      const producto = {
-        nombre: this.closest('.product-item').querySelector('h3').innerText,
-        precio: this.closest('.product-item').querySelector('.product-price').innerText,
-        imagen: this.closest('.product-item').querySelector('img').src,
-      };
-
-      agregarMetaEtiquetas(producto);
-
-      if (navigator.share) {
-        navigator.share({
-          title: producto.nombre,
-          text: `¡Promoción especial en ${producto.nombre} por solo ${producto.precio}!`,
-          url: window.location.href,
-        });
-      } else {
-        alert('Tu navegador no soporta la función de compartir.');
-      }
-    });
-  });
+});
