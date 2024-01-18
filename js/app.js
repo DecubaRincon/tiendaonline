@@ -407,12 +407,9 @@ elementos.forEach(function(elemento) {
 });*/
 
 //----------------------------------------------------------------------------------------------------------------------------------
-// Función para agregar meta etiquetas Open Graph
-  function agregarMetaEtiquetas(producto) {
-    // Elimina las meta etiquetas existentes
+function agregarMetaEtiquetas(producto) {
     document.querySelectorAll('meta[property^="og:"]').forEach(tag => tag.remove());
 
-    // Crea las nuevas meta etiquetas
     const metaTags = [
       { property: 'og:title', content: producto.nombre },
       { property: 'og:description', content: `¡Promoción especial en ${producto.nombre} por solo $${producto.precio}!` },
@@ -420,7 +417,6 @@ elementos.forEach(function(elemento) {
       { property: 'og:url', content: window.location.href },
     ];
 
-    // Agrega las meta etiquetas al head del documento
     metaTags.forEach(tag => {
       const metaTag = document.createElement('meta');
       metaTag.setAttribute('property', tag.property);
@@ -429,22 +425,18 @@ elementos.forEach(function(elemento) {
     });
   }
 
-  // Evento de clic en el icono de compartir
   document.querySelectorAll('.icon-link').forEach(icon => {
     icon.addEventListener('click', function(event) {
       event.preventDefault();
 
-      // Obtén la información del producto
       const producto = {
         nombre: this.closest('.product-item').querySelector('h3').innerText,
         precio: this.closest('.product-item').querySelector('.product-price').innerText,
         imagen: this.closest('.product-item').querySelector('img').src,
       };
 
-      // Agrega las meta etiquetas al hacer clic en el icono de compartir
       agregarMetaEtiquetas(producto);
 
-      // Abre la ventana de compartir
       if (navigator.share) {
         navigator.share({
           title: producto.nombre,
@@ -452,9 +444,7 @@ elementos.forEach(function(elemento) {
           url: window.location.href,
         });
       } else {
-        // Si el navegador no soporta la Web Share API, puedes agregar aquí la lógica para abrir tu propio modal de compartir.
         alert('Tu navegador no soporta la función de compartir.');
       }
     });
   });
-
