@@ -355,7 +355,7 @@ elementos.forEach(function(elemento) {
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
-/*$(document).ready(function() {
+$(document).ready(function() {
   $('.icon-link').on('click', function(e) {
       e.preventDefault(); // Evita que el enlace se siga como un enlace normal
 
@@ -372,7 +372,7 @@ elementos.forEach(function(elemento) {
       window.open(twitterUrl, '_blank');
       window.open(whatsappUrl, '_blank');
   });
-});*/
+});
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
@@ -407,7 +407,7 @@ elementos.forEach(function(elemento) {
 });*/
 
 //----------------------------------------------------------------------------------------------------------------------------------
-document.querySelectorAll('.product-item').forEach(item => {
+/*document.querySelectorAll('.product-item').forEach(item => {
     const shareIcon = item.querySelector('.bi-share');
     const productImage = item.querySelector('.card-img-top').src;
     const productName = item.querySelector('.p-info h3').innerText;
@@ -429,4 +429,4 @@ document.querySelectorAll('.product-item').forEach(item => {
             console.log('La API de Web Share no está soportada en tu navegador');
         }
     });
-});
+});*/
