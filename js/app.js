@@ -355,7 +355,7 @@ elementos.forEach(function(elemento) {
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
-$(document).ready(function() {
+/*$(document).ready(function() {
   $('.icon-link').on('click', function(e) {
       e.preventDefault(); // Evita que el enlace se siga como un enlace normal
 
@@ -372,7 +372,7 @@ $(document).ready(function() {
       window.open(twitterUrl, '_blank');
       window.open(whatsappUrl, '_blank');
   });
-});
+});*/
 
 //----------------------------------------------------------------------------------------------------------------------------------
 
@@ -407,26 +407,23 @@ $(document).ready(function() {
 });*/
 
 //----------------------------------------------------------------------------------------------------------------------------------
-/*document.querySelectorAll('.product-item').forEach(item => {
-    const shareIcon = item.querySelector('.bi-share');
-    const productImage = item.querySelector('.card-img-top').src;
-    const productName = item.querySelector('.p-info h3').innerText;
-    const productPrice = item.querySelector('.product-price').innerText;
+ function shareProduct() {
+        const product = document.querySelector('.product-item');
+        const title = product.querySelector('h3').textContent;
+        const text = "¡Este producto es increíble! ¡Deberías echarle un vistazo!";
+        const url = window.location.href;
+        const image = product.querySelector('img').src;
 
-    shareIcon.addEventListener('click', async () => {
         if (navigator.share) {
-            try {
-                await navigator.share({
-                    title: `¡Mira este producto increíble!`,
-                    text: `¡Echa un vistazo a este ${productName} que encontré por solo ${productPrice}!`,
-                    url: productImage,
-                });
-                console.log('Producto compartido exitosamente');
-            } catch (err) {
-                console.error('Error compartiendo el producto', err);
-            }
+            navigator.share({
+                title: title,
+                text: text,
+                url: url,
+                files: [image]
+            })
+                .then(() => console.log('Producto compartido con éxito'))
+                .catch((error) => console.log('Error al compartir', error));
         } else {
-            console.log('La API de Web Share no está soportada en tu navegador');
+            console.log('La API de Compartir Web no está disponible en este navegador');
         }
-    });
-});*/
+    }
