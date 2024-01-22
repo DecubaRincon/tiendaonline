@@ -1,39 +1,31 @@
 function generarCupon() {
-  var longitud = 8; // Reducimos la longitud a 8 porque añadiremos 'r' al principio y '10' al final
+  var longitud = 8; 
   var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  var cupon = 'r'; // Inicializamos el cupón con 'r'
+  var cupon = 'r';
   for ( var i = 0; i < longitud; i++ ) {
-    cupon += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+     cupon += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
   }
-  cupon += '10'; // Añadimos '10' al final
+  cupon += '10';
   return cupon;
 }
 
-// Obtén los elementos del DOM
 const cuponElement = document.getElementById('cupon');
 const discountCode = document.getElementById('discountCode');
 
-// Obtén el modal
 var modal = document.getElementById('anuncio-modal');
 
-// Cuando se muestra el modal, genera un nuevo código de cupón
 modal.addEventListener('shown.bs.modal', function () {
-  // Genera un nuevo código de cupón
   var nuevoCupon = generarCupon();
 
-  // Actualiza el valor del cupón en el modal
   if (cuponElement) {
     cuponElement.value = nuevoCupon;
   }
 });
 
-// Añade un evento de clic al botón de copiar
 document.querySelector('#anuncio-modal .btn-primary').addEventListener('click', function() {
-  // Copia el valor del cupón
   cuponElement.select();
   document.execCommand('copy');
 
-  // Inserta el valor del cupón en el campo de entrada discountCode
   discountCode.value = cuponElement.value;
 });
 
@@ -280,13 +272,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCart();
   };
 
-  // Cargar los datos del carrito desde el almacenamiento local cuando se carga la página
   updateCart();
 });
-
-//-------------------------------------------------------------------------------------------------------
-
-// funciones con el contador
 
 if(localStorage.getItem('visitCount')) {
   let count = parseInt(localStorage.getItem('visitCount'));
@@ -300,130 +287,93 @@ if(localStorage.getItem('visitCount')) {
   }
 
   if (count == 3) {
-    // Redirige a la página de registro en la tercera visita
-    window.location.href = '';
+    
   } else if (count == 4) {
-    // Activar el otro modal en la cuarta visita
     var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
     otroModal.show();
   } else if (count == 6) {
-    // Activar el otro modal en la cuarta visita
+    
     var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalx'), {});
     otroModal.show();
   }
 } else {
-  localStorage.setItem('visitCount', 1);
+  localStorage.setItem('visitCount', 1); 
 }
 
 function resetCounter() {
   var personalCode = document.getElementById('personalCode').value;
   if(personalCode === predefinedCode) {
-    // Reinicia el contador
+    
     localStorage.setItem('visitCount', 0);
     alert("El contador de la página se ha reiniciado.");
-    // Actualiza la página
+    
     location.reload();
   } else {
     alert("El código personal ingresado no es correcto.");
   }
 }
 
-//---------------------------------------------------------------------------
-
-// Selecciona todos los elementos que tienen la clase add-to-cart
 var elementos = document.querySelectorAll(".add-to-modal");
 
-// Recorre cada elemento y añade un evento de clic
 elementos.forEach(function(elemento) {
   elemento.addEventListener("click", function(evento) {
-    // Evita el comportamiento por defecto del enlace
+    
     evento.preventDefault();
-    // Obtiene la imagen del producto
+    
     var imagen = elemento.querySelector("img");
-    // Obtiene el atributo src de la imagen
+    
     var src = imagen.getAttribute("src");
-    // Obtiene el modal por su id
+    
     var modal = document.getElementById("product-modal");
-    // Obtiene la imagen del modal por su id
+    
     var modalImagen = document.getElementById("product-modal-image");
-    // Asigna el src de la imagen del producto al src de la imagen del modal
+    
     modalImagen.setAttribute("src", src);
-    // Muestra el modal usando el método modal de Bootstrap
+    
     $(modal).modal("show");
   });
 });
 
-//----------------------------------------------------------------------------------------------------------------------------------
+// Función para compartir producto
+function shareProduct(event) {
 
-/*$(document).ready(function() {
-  $('.icon-link').on('click', function(e) {
-      e.preventDefault(); // Evita que el enlace se siga como un enlace normal
+  event.preventDefault();
+  
+  // Obtener datos del producto
+  const name = document.querySelector('.p-info h3').innerText;
+  const image = document.querySelector('.p-portada img').src;
+  const price = document.querySelector('.precio span').innerText;
 
-      var url = window.location.href; // obtén la URL del producto
-      var title = document.title; // obtén el título del producto
+  // Construir mensaje
+  const shareMessage = `${name}\nPrecio: ${price}\n¡Visita la tienda para comprarlo!`;
+  
+  // URLs para compartir
+  const waURL = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+  const fbURL = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(image)}&quote=${encodeURIComponent(shareMessage)}`;  
+  const twURL = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}`;
 
-      // URLs de compartir para diferentes redes sociales
-      var facebookUrl = 'https://www.facebook.com/sharer.php?u=' + url;
-      var twitterUrl = 'https://twitter.com/share?url=' + url + '&text=' + title;
-      var whatsappUrl = 'https://api.whatsapp.com/send?text=' + title + ' ' + url;
+  // Abrir ventana para elegir
+  window.open(`
+    <a href="${waURL}" target="_blank">Compartir por WhatsApp</a>
+    <a href="${fbURL}" target="_blank">Compartir por Facebook</a>
+    <a href="${twURL}" target="_blank">Compartir por Twitter</a>`
+  );
 
-      // abre las URLs de compartir en una nueva ventana
-      window.open(facebookUrl, '_blank');
-      window.open(twitterUrl, '_blank');
-      window.open(whatsappUrl, '_blank');
-  });
-});*/
+}
 
-//----------------------------------------------------------------------------------------------------------------------------------
+// Añadir listener al botón de compartir
+document.querySelector('.bi-share').addEventListener('click', shareProduct);
 
+AOS.init({
+  duration: 1200
+})
 
-/*$(document).ready(function() {
-    $('.bi-share').click(function(e) {
-        e.preventDefault();
+document.getElementById('reset-button').addEventListener('click', function() {
 
-        var productItem = $(this).closest('.product-item');
-        var productName = productItem.find('.p-info h3').text();
-        var productPrice = productItem.find('.product-price').text();
-        var productImage = productItem.find('.p-portada img').attr('src');
-        var productUrl = window.location.href;
-        var productDescription = `¡Echa un vistazo a este increíble producto! ${productName} por solo ${productPrice}. ¡Lo recomiendo altamente!`;
+  localStorage.setItem('visitCount', 0);
+  
+  alert("El contador de la página se ha reiniciado.");
+  
+  location.reload();
 
-        $('meta[property="og:title"]').attr('content', productName);
-        $('meta[property="og:description"]').attr('content', productDescription);
-        $('meta[property="og:image"]').attr('content', productImage);
-        $('meta[property="og:url"]').attr('content', productUrl);
-
-        if (navigator.share) {
-            navigator.share({
-                title: productName,
-                text: productDescription,
-                url: productUrl,
-            }).then(() => console.log('Producto compartido exitosamente'))
-            .catch((error) => console.log('Hubo un error al compartir', error));
-        } else {
-            console.log(`Tu navegador no soporta la API de Web Share.`);
-        }
-    });
-});*/
-
-//----------------------------------------------------------------------------------------------------------------------------------
- function shareProduct() {
-        const product = document.querySelector('.product-item');
-        const title = product.querySelector('h3').textContent;
-        const text = "¡Este producto es increíble! ¡Deberías echarle un vistazo!";
-        const url = window.location.href;
-        const image = product.querySelector('img').src;
-
-        if (navigator.share) {
-            navigator.share({
-                title: title,
-                text: text,
-                url: url,
-                files: [image]
-            })
-                .then(() => console.log('Producto compartido con éxito'))
-                .catch((error) => console.log('Error al compartir', error));
-        } else {
-            console.log('La API de Compartir Web no está disponible en este navegador');
-        }
-    }
+});
