@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <!-- FUENTE GOOGLE FONTS : Poppins -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+     <!-- ICONS: Font Awesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+ 
+     <!-- ICONS: Line Awesome -->
+     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+ 
+     <!-- Animaciones AOS -->
+     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+ 
+     <!-- Bootstrap 5.3 -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css">
+ 
+ 
+     <link rel="icon" type="image/png" href="https://i.postimg.cc/VkBZVg7d/Favicon-Rincon-de-Cuba-Fondo-Blanco.png"/>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+ 
+ 
+     <link
+   rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+ />
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aceite - Tienda Online</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <meta property="og:title" content="Aceite">
+    <meta property="og:description" content="1 Litro">
+    <meta property="og:image" content="https://i.postimg.cc/ZRHWtppk/Aceite-de-1-L.jpg">
+    <meta property="og:url" content="https://decubarincon.github.io/tiendaonline/">
+    <meta property="og:price:amount" content="3.50">
+    <meta property="og:price:currency" content="USD">
+</head>
+<body>
+    <div class="container py-5">
+        <div class="card" style="width: 18rem;">
+            <img src="https://i.postimg.cc/ZRHWtppk/Aceite-de-1-L.jpg" class="card-img-top" alt="Aceite">
+            <div class="card-body">
+                <h5 class="card-title">Aceite</h5>
+                <p class="card-text">1 Litro</p>
+                <p class="card-text">$3.50</p>
+                <a href="#" class="btn btn-primary" onclick="shareProduct()">Compartir</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function shareProduct() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Aceite',
+                    text: '1 Litro - $3.50',
+                    url: 'https://decubarincon.github.io/tiendaonline/',
+                })
+                .then(() => console.log('Successful share'))
+                .catch((error) => console.log('Error sharing', error));
+            }
+        }
+    </script>
+</body>
+</html>
