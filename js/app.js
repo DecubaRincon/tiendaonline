@@ -373,40 +373,58 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-const productos = [
-  {
-    titulo: "Aceite de 1 Litro",
-    descripcion: "Aprovecha esta oferta y llévate este aceite de excelente calidad por solo $3.50us. ¡No te quedes sin el tuyo!",
-    imagen: "https://i.postimg.cc/ZRHWtppk/Aceite-de-1-L.jpg",
-    url: "https://tupagina.com/productos/aceite-de-1-litro"
-  },
-  {
-    titulo: "Arroz de 500 g",
-    descripcion: "El arroz es un alimento básico que no puede faltar en tu cocina. Disfruta de este arroz de grano largo y fácil de cocinar por solo $1.20us.",
-    imagen: "https://i.postimg.cc/8zQ9QZwB/Arroz-de-500-g.jpg",
-    url: "https://tupagina.com/productos/arroz-de-500-g"
-  },
-  // ... otros productos
-];
-function actualizarMetaTags(enlace) {
-  // Buscar el producto que tiene el mismo enlace
-  let producto = productos.find(p => p.url === enlace);
-  // Si se encuentra el producto, actualizar las etiquetas meta
-  if (producto) {
-    document.querySelector("meta[property='og:title']").setAttribute("content", producto.titulo);
-    document.querySelector("meta[property='og:description']").setAttribute("content", producto.descripcion);
-    document.querySelector("meta[property='og:image']").setAttribute("content", producto.imagen);
-    document.querySelector("meta[property='og:url']").setAttribute("content", producto.url);
+function shareProduct(event) {
+
+  event.preventDefault();
+
+  const product = event.target.closest('.product-item');
+
+  if(!product) return;
+
+  const image = product.querySelector('.card-img-top').src;
+  const title = product.querySelector('h3').innerText;
+  
+  const url = window.location.href; // URL del producto
+
+  // Miniatura y mensaje  
+  const shareData = {
+    title: title,
+    text: 'Te recomiendo este producto:', 
+    image: image,
   }
+
+  // Abrir ventana de compartir en Facebook
+  shareOnFacebook(url, shareData);
+
+  // Abrir ventana de compartir en Twitter
+  shareOnTwitter(url, shareData);  
+
+  // Abrir ventana de compartir en WhatsApp
+  shareOnWhatsapp(url, shareData);
+
 }
-// Seleccionar todos los iconos de compartir
-let iconos = document.querySelectorAll(".icon-link");
-// Añadir un evento de clic a cada icono
-iconos.forEach(icono => {
-  icono.addEventListener("click", e => {
-    // Obtener el enlace del producto que se quiere compartir
-    let enlace = e.target.closest(".product-item").querySelector(".p-portada a").href;
-    // Actualizar las etiquetas meta con el enlace
-    actualizarMetaTags(enlace);
-  });
-});
+
+
+// Funciones helpers
+function shareOnFacebook(url, data){
+
+  const { title, text, image } = data;
+
+  const fbShareURL = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title} - ${text}`;
+  
+  const fbShareWindow = window.open(fbShareURL, 'facebookShare', 'width=600,height=400');
+  fbShareWindow.focus();  
+
+}
+
+function shareOnTwitter(url, data){
+
+  // url y texto - puedes incluir imagen o hashtags
+
+}
+
+function shareOnWhatsapp(url, data){
+  
+  // url y texto - no admite imágenes
+  
+}
