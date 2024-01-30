@@ -373,58 +373,23 @@ elementos.forEach(function(elemento) {
       window.open(whatsappUrl, '_blank');
   });
 });*/
-function shareProduct(event) {
+$(document).ready(function() {
+  $('.bi-share').click(function(event) {
+      event.preventDefault();
 
-  event.preventDefault();
+      var productItem = $(this).closest('.product-item');
+      var productName = productItem.find('h3').text();
+      var productPrice = productItem.find('.product-price').text();
+      var productImage = productItem.find('.card-img-top').attr('src');
+      var productUrl = productItem.find('.add-to-modal').attr('href');
 
-  const product = event.target.closest('.product-item');
+      $('head').append('<meta property="og:title" content="' + productName + '">');
+      $('head').append('<meta property="og:description" content="' + productPrice + '">');
+      $('head').append('<meta property="og:image" content="' + productImage + '">');
+      $('head').append('<meta property="og:url" content="' + productUrl + '">');
 
-  if(!product) return;
-
-  const image = product.querySelector('.card-img-top').src;
-  const title = product.querySelector('h3').innerText;
-  
-  const url = window.location.href; // URL del producto
-
-  // Miniatura y mensaje  
-  const shareData = {
-    title: title,
-    text: 'Te recomiendo este producto:', 
-    image: image,
-  }
-
-  // Abrir ventana de compartir en Facebook
-  shareOnFacebook(url, shareData);
-
-  // Abrir ventana de compartir en Twitter
-  shareOnTwitter(url, shareData);  
-
-  // Abrir ventana de compartir en WhatsApp
-  shareOnWhatsapp(url, shareData);
-
-}
-
-
-// Funciones helpers
-function shareOnFacebook(url, data){
-
-  const { title, text, image } = data;
-
-  const fbShareURL = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${title} - ${text}`;
-  
-  const fbShareWindow = window.open(fbShareURL, 'facebookShare', 'width=600,height=400');
-  fbShareWindow.focus();  
-
-}
-
-function shareOnTwitter(url, data){
-
-  // url y texto - puedes incluir imagen o hashtags
-
-}
-
-function shareOnWhatsapp(url, data){
-  
-  // url y texto - no admite imágenes
-  
-}
+      // Aquí puedes agregar tu código para compartir el producto
+      // Por ejemplo, puedes abrir una nueva ventana con la URL de compartir de Facebook
+     window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(productUrl));
+  });
+});
