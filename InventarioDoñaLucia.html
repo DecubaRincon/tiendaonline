@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inventario Doña Lucia</title>
+<link rel="icon" type="image/png" href="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png"/>
+<style>
+ html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f3f3f3;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #2c3e50;
+  text-align: center;
+}
+h3 {
+  color: #ffffff;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ecf0f1;
+  padding: 10px;
+  text-align: left;
+  background-color: #ffffff;
+}
+
+th {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+td {
+  color: #34495e;
+}
+
+button {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.agregar-productos-container,
+.total {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type='text'],
+input[type='number'] {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  align-items: center;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.btn-number {
+  background-color: #ff6e35;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  padding: .375rem .75rem;
+  height: calc(1.5em + .75rem + 2px);
+  margin: 0 5px;
+}
+
+@media (max-width: 600px) {
+  h2, h3 {
+    font-size: 18px;
+  }
+
+  th, td {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    margin-bottom: 5px;
+    
+  }
+
+  input[type='text'],
+  input[type='number'] {
+    font-size: 14px;
+    width: 65%;
+    align-items: center;
+  }
+}
+
+
+/* CSS: Estilos para la pestaña lateral */
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Inicialmente oculto */
+  width: 300px;
+  height: 100%;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  transition: right 0.3s;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#sidebar-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#sidebar-toggle {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f39c12;
+  color: #2c3e50;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  font-size: 24px;
+}
+
+/* CSS: Estilo cuando la pestaña está visible */
+#sidebar.open {
+  right: 0;
+}
+
+/* Estilos adicionales para botones y select */
+#sidebar button, #sidebar select {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+#sidebar button {
+  background-color: #34495e;
+  color: #ecf0f1;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#sidebar button:hover {
+  background-color: #4a6572;
+}
+
+#sidebar select {
+  background-color: #ffffff;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Inventario Doña Lucia</h2>
+  <div id="fechaInventario"></div>
+<!-- HTML: Estructura de la pestaña lateral -->
+<div id="sidebar">
+  <div id="sidebar-toggle" onclick="toggleSidebar()">☰</div>
+  <div id="sidebar-content">
+    <h3>CONTROL DE INVENTARIO</h3>
+    
+    <button onclick="guardarEstadoInventario()">Guardar Inventario</button>
+    <button onclick="eliminarGuardado(document.getElementById('desplegableInventario').value)">Eliminar Guardado</button>
+    <button onclick="restaurarInventario()">Restaurar Inventario</button>
+    <select id="desplegableInventario" onchange="cargarInventario(this.value)">
+      <!-- Opciones del desplegable -->
+    </select>
+    <h3>AGREGAR PRODUCTO</h3>
+  <input type="text" id="nombreProducto" placeholder="Nombre del Producto" required>
+  <input type="number" id="precioProducto" placeholder="Precio del Producto" step="0.01" min="0" required>
+  <button onclick="agregarNuevoProducto()">Agregar Producto</button>
+  <h3>INFORME</h3>
+ <button onclick="generarInforme()">Generar Informe</button>
+<button onclick="descargarInforme()">Descargar Informe</button>
+
+  </div>
+</div>
+
+
+  <table id="inventoryTable">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Existencia</th>
+        
+        <th id="totalVendidos">Vendido (0)</th>
+
+
+        <th>Importe Total</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <!-- Los productos se añadirán aquí dinámicamente -->
+    </tbody>
+  </table>
+  <p class="total">Importe General: <span id="totalGeneral">0</span></p>
+</div>
+<!-- Agregar al final de tu <body> justo antes del <script> -->
+
+  
+
+<script>
+// JavaScript: Función para alternar la visibilidad de la pestaña lateral
+function toggleSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// JavaScript: Función para alternar la visibilidad de la pestaña lateral
+function toggleSidebar() {
+  var sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('open');
+}
+
+// Evento para cerrar la pestaña lateral al hacer clic fuera de ella
+window.addEventListener('click', function(event) {
+  var sidebar = document.getElementById('sidebar');
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  // Verificar si el clic fue fuera de la pestaña lateral y si está abierta
+  if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target) && sidebar.classList.contains('open')) {
+    toggleSidebar(); // Llamar a la función que cierra la pestaña lateral
+  }
+});
+
+// Prevenir que el evento de clic en la pestaña lateral se propague al window
+document.getElementById('sidebar').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+
+
+//------------------------------------------------------------------------------------------
+
+let productos = JSON.parse(localStorage.getItem('productos')) || [];
+
+function obtenerFechaActual() {
+  const hoy = new Date();
+  const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+  return hoy.toLocaleDateString('es-ES', opciones);
+}
+
+function agregarProducto(nombre, precio) {
+  productos.push({ nombre, precio, existencia: 0, vendido: 0 });
+  guardarProductos();
+  renderizarProductos();
+}
+
+function actualizarProducto(index, campo, valor) {
+  const producto = productos[index];
+  if (campo === 'existencia' || campo === 'vendido') {
+    const confirmacion = confirm('¿Quieres cambiar la ' + (campo === 'existencia' ? 'existencia' : 'cantidad vendida') + ' de "' + producto.nombre + '" a ' + valor + '?');
+    if (!confirmacion) {
+      return;
+    }
+  }
+  productos[index][campo] = Number(valor);
+  guardarProductos();
+  renderizarProductos();
+}
+
+function eliminarProducto(index) {
+  const confirmacion = confirm('¿Deseas eliminar el producto "' + productos[index].nombre + '"?');
+  if (confirmacion) {
+    productos.splice(index, 1);
+    guardarProductos();
+    renderizarProductos();
+  }
+}
+
+function guardarProductos() {
+  localStorage.setItem('productos', JSON.stringify(productos));
+}
+
+function renderizarProductos() {
+  const tabla = document.querySelector('#inventoryTable tbody');
+  tabla.innerHTML = '';
+  let totalVendidos = 0;
+  let totalGeneral = 0;
+
+  productos.forEach((producto, index) => {
+    totalVendidos += producto.vendido;
+    const importeTotal = producto.precio * producto.vendido;
+    totalGeneral += importeTotal;
+
+    const fila = tabla.insertRow();
+    fila.insertCell().textContent = producto.nombre;
+    fila.insertCell().textContent = producto.precio.toFixed(2);
+    fila.insertCell().appendChild(crearInput('existencia', index, producto.existencia));
+    fila.insertCell().appendChild(crearInput('vendido', index, producto.vendido));
+    fila.insertCell().textContent = importeTotal.toFixed(2);
+
+    const celdaEliminar = fila.insertCell();
+    const botonEliminar = document.createElement('button');
+    botonEliminar.textContent = 'Eliminar';
+    botonEliminar.classList.add('eliminar');
+    botonEliminar.onclick = function() { eliminarProducto(index); };
+    celdaEliminar.appendChild(botonEliminar);
+  });
+
+  document.getElementById('totalVendidos').textContent = 'Vendido (' + totalVendidos + ')';
+  document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
+  document.getElementById('fechaInventario').textContent = 'Fecha: ' + obtenerFechaActual();
+}
+
+function crearInput(campo, index, valor) {
+  const contenedor = document.createElement('div');
+  contenedor.classList.add('input-group');
+
+  const botonRestar = document.createElement('button');
+  botonRestar.textContent = '-';
+  botonRestar.classList.add('btn', 'btn-number');
+  botonRestar.onclick = function() {
+    const actual = parseInt(productos[index][campo]);
+    actualizarProducto(index, campo, actual - 1);
+  };
+
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.min = 0;
+  input.value = valor;
+  input.classList.add('form-control', 'input-number');
+  input.onchange = function() {
+    actualizarProducto(index, campo, this.value);
+  };
+
+  const botonSumar = document.createElement('button');
+  botonSumar.textContent = '+';
+  botonSumar.classList.add('btn', 'btn-number');
+  botonSumar.onclick = function() {
+    const actual = parseInt(productos[index][campo]);
+    actualizarProducto(index, campo, actual + 1);
+  };
+
+  contenedor.appendChild(botonRestar);
+  contenedor.appendChild(input);
+  contenedor.appendChild(botonSumar);
+
+  return contenedor;
+}
+
+function agregarNuevoProducto() {
+  const nombre = document.getElementById('nombreProducto').value;
+  const precio = document.getElementById('precioProducto').value;
+  
+  if (nombre && precio) {
+    agregarProducto(nombre, parseFloat(precio));
+    document.getElementById('nombreProducto').value = '';
+    document.getElementById('precioProducto').value = '';
+  } else {
+    alert('Por favor, ingresa el nombre y el precio del producto.');
+  }
+}
+function generarInforme() {  
+  let informe = '<table border="1">';
+  informe += '<tr><th>Producto</th><th>Precio</th><th>Existencia</th><th>Vendido</th><th>Importe Total</th></tr>';
+  informe += '<h2>Informe de Inventario - ' + obtenerFechaActual() + '</h2>';
+  productos.forEach(producto => {
+    informe += `<tr><td>${producto.nombre}</td><td>${producto.precio.toFixed(2)}</td><td>${producto.existencia}</td><td>${producto.vendido}</td><td>${(producto.precio * producto.vendido).toFixed(2)}</td></tr>`;
+  });
+
+  const totalGeneral = productos.reduce((total, producto) => total + (producto.precio * producto.vendido), 0);
+  informe += `<tr><td colspan="4">Importe Total General</td><td>${totalGeneral.toFixed(2)}</td></tr>`;
+  informe += '</table>';
+
+  const ventanaInforme = window.open('', '', 'width=800,height=600');
+  ventanaInforme.document.write(informe);
+  ventanaInforme.document.close();
+}
+document.addEventListener('DOMContentLoaded', () => {
+  if (productos.length === 0) {
+    agregarProducto('Pizza Q', 100.00);
+    agregarProducto('Pizza Chor', 110.00);
+    agregarProducto('Pizza Salch', 110.00);
+    agregarProducto('Ref vaso', 20.00);
+    agregarProducto('Ref Lata', 190.00);
+    agregarProducto('Malta Lata', 200.00);
+    agregarProducto('Cig Pop', 100.00);
+    agregarProducto('Cig criollo', 100.00);
+    agregarProducto('Tabaco', 20.00);
+    agregarProducto('Leche Cond', 600.00);
+    agregarProducto('Gall Dulce', 110.00);
+    agregarProducto('Cerveza Imp', 180.00);
+    agregarProducto('Ref Pomo', 550.00);
+    agregarProducto('Ref Zuko', 60.00);
+  }
+  actualizarDesplegableInventario();
+  renderizarProductos();
+  
+});
+
+function descargarInforme() {
+  let informe = 'Producto,Precio,Existencia,Vendido,Importe Total\n';
+
+  productos.forEach(producto => {
+    informe += `${producto.nombre},${producto.precio.toFixed(2)},${producto.existencia},${producto.vendido},${(producto.precio * producto.vendido).toFixed(2)}\n`;
+  });
+
+  const totalGeneral = productos.reduce((total, producto) => total + (producto.precio * producto.vendido), 0);
+  informe += `, , ,Importe Total General,${totalGeneral.toFixed(2)}`;
+
+  const blob = new Blob([informe], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const enlace = document.createElement('a');
+  enlace.setAttribute('href', url);
+  enlace.setAttribute('download', 'informe_inventario.csv');
+  enlace.style.visibility = 'hidden';
+  document.body.appendChild(enlace);
+  enlace.click();
+  document.body.removeChild(enlace);
+}
+function restaurarInventario() {
+  if (confirm('¿Estás seguro de que quieres restaurar el inventario y eliminar todos los datos? Esta acción no se puede deshacer.')) {
+    
+    const estadoActual = JSON.parse(localStorage.getItem('inventario_actual')) || [];
+  estadoActual.forEach(producto => {
+    producto.existencia = 0;
+    producto.vendido = 0;
+  });
+  localStorage.setItem('inventario_actual', JSON.stringify(estadoActual));
+  productos = estadoActual;
+  renderizarProductos();
+
+    alert('El inventario ha sido restaurado y todos los datos han sido eliminados.');
+  }
+}
+function guardarEstadoInventario() {
+  const clave = 'inventario_' + new Date().toISOString();
+  localStorage.setItem(clave, JSON.stringify(productos));
+  actualizarDesplegableInventario();
+  renderizarProductos();
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  actualizarDesplegableInventario();
+  renderizarProductos();
+});
+
+function actualizarDesplegableInventario() {
+  const desplegable = document.getElementById('desplegableInventario');
+  desplegable.innerHTML = ''; // Limpiar el desplegable
+  Object.keys(localStorage).forEach(clave => {
+    if (clave.startsWith('inventario_')) {
+      const opcion = document.createElement('option');
+      opcion.value = clave;
+      opcion.textContent = clave.replace('inventario_', '').replace('T', ' ').replace(/\..+/, '');
+      desplegable.appendChild(opcion);
+    }
+  });
+}
+
+function restaurarInventario() {
+  if (confirm('¿Estás seguro de que quieres restaurar el inventario y eliminar todos los datos? Esta acción no se puede deshacer.')) {
+  // Limpiar el inventario actual
+  productos = [];
+
+  // Agregar los productos predefinidos
+  agregarProducto('Pizza Q', 100.00);
+  agregarProducto('Pizza Chor', 110.00);
+  agregarProducto('Pizza Salch', 110.00);
+  agregarProducto('Ref vaso', 20.00);
+  agregarProducto('Ref Lata', 190.00);
+  agregarProducto('Malta Lata', 200.00);
+  agregarProducto('Cig Pop', 100.00);
+  agregarProducto('Cig criollo', 100.00);
+  agregarProducto('Tabaco', 20.00);
+  agregarProducto('Leche Cond', 600.00);
+  agregarProducto('Gall Dulce', 110.00);
+  agregarProducto('Cerveza Imp', 180.00);
+  agregarProducto('Ref Pomo', 550.00);
+  agregarProducto('Ref Zuko', 60.00);
+
+  // Guardar los productos en localStorage y actualizar la tabla
+  guardarProductos();
+  renderizarProductos();
+  alert('El inventario ha sido restaurado y todos los datos han sido eliminados.');
+  }
+}
+
+function guardarProductos() {
+  localStorage.setItem('productos', JSON.stringify(productos));
+}
+
+
+
+function eliminarGuardado(clave) {
+  if (clave) {
+    localStorage.removeItem(clave);
+    actualizarDesplegableInventario();
+  }
+}
+
+function restaurarEstadoInventario() {
+  const clave = document.getElementById('desplegableInventario').value;
+  if (clave === 'actual') {
+    // No hacer nada si se selecciona la opción "Actual"
+    return;
+  }
+  productos = JSON.parse(localStorage.getItem(clave));
+  renderizarProductos();
+}
+
+// Asegúrate de llamar a esta función cuando el usuario seleccione una opción del desplegable
+document.getElementById('desplegableInventario').addEventListener('change', function() {
+  const clave = this.value;
+  if (clave !== '') {
+    const confirmacion = confirm('¿Deseas guardar los datos actuales antes de cargar una copia anterior?');
+    if (confirmacion) {
+      // Guardar los datos actuales con una nueva clave
+      const nuevaClave = 'inventario_' + new Date().toISOString();
+      localStorage.setItem(nuevaClave, JSON.stringify(productos));
+      actualizarDesplegableInventario();
+    }
+    // Cargar la copia seleccionada
+    productos = JSON.parse(localStorage.getItem(clave));
+    renderizarProductos();
+  }
+});
+function obtenerFechaActual() {
+  const hoy = new Date();
+  const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+  return hoy.toLocaleDateString('es-ES', opciones);
+}
+renderizarProductos();
+function guardarEstadoInventario() {
+  const clave = 'inventario_' + new Date().toISOString();
+  localStorage.setItem(clave, JSON.stringify(productos));
+  actualizarDesplegableInventario();
+}
+
+
+</script>
+
+</body>
+</html>
