@@ -282,10 +282,19 @@ document.getElementById('sidebar').addEventListener('click', function(event) {
 
 let productos = JSON.parse(localStorage.getItem('productos')) || [];
 
-function obtenerFechaActual() {
+function obtenerFechaHoraActualCuba() {
   const hoy = new Date();
-  const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
-  return hoy.toLocaleDateString('es-ES', opciones);
+  const opciones = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    timeZone: 'America/Havana',
+    hour12: true
+  };
+  return hoy.toLocaleString('es-CU', opciones);
 }
 
 function agregarProducto(nombre, precio) {
@@ -348,7 +357,7 @@ function renderizarProductos() {
 
   document.getElementById('totalVendidos').textContent = 'Vendido (' + totalVendidos + ')';
   document.getElementById('totalGeneral').textContent = totalGeneral.toFixed(2);
-  document.getElementById('fechaInventario').textContent = 'Fecha: ' + obtenerFechaActual();
+  document.getElementById('fechaInventario').textContent = 'Fecha: ' + obtenerFechaHoraActualCuba();
 }
 
 function crearInput(campo, index, valor) {
@@ -402,7 +411,13 @@ function agregarNuevoProducto() {
 function generarInforme() {  
   let informe = '<table border="1">';
   informe += '<tr><th>Producto</th><th>Precio</th><th>Existencia</th><th>Vendido</th><th>Importe Total</th></tr>';
-  informe += '<h2>Informe de Inventario - ' + obtenerFechaActual() + '</h2>';
+  // Agregar el logo con tamaño de 40px y el texto debajo
+  informe += '<div style="text-align:center; margin-bottom:20px;">';
+  informe += '<img src="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png" alt="Logo Doña Lucia" style="height:80px;">';
+  informe += '<div><h2>Inventario Doña Lucia</h2></div>';
+  informe += '<h2>Informe de Inventario - ' + obtenerFechaHoraActualCuba() + '</h2>';
+  informe += '</div>';
+  
   productos.forEach(producto => {
     informe += `<tr><td>${producto.nombre}</td><td>${producto.precio.toFixed(2)}</td><td>${producto.existencia}</td><td>${producto.vendido}</td><td>${(producto.precio * producto.vendido).toFixed(2)}</td></tr>`;
   });
@@ -415,6 +430,7 @@ function generarInforme() {
   ventanaInforme.document.write(informe);
   ventanaInforme.document.close();
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   if (productos.length === 0) {
     agregarProducto('Pizza Q', 100.00);
@@ -565,7 +581,7 @@ document.getElementById('desplegableInventario').addEventListener('change', func
     renderizarProductos();
   }
 });
-function obtenerFechaActual() {
+function obtenerFechaHoraActualCuba() {
   const hoy = new Date();
   const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
   return hoy.toLocaleDateString('es-ES', opciones);
