@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página de Inicio de Sesión</title>
+<style>
+ body {
+  font-family: 'Open Sans', sans-serif;
+  background: #f2f2f2; /* Un fondo plano para un diseño limpio */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Asegura que todo esté centrado */
+}
+
+.login-container {
+  width: 100%;
+  max-width: 320px;
+}
+
+.logo {
+  background-image: url('https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png'); /* Reemplaza con la ruta de tu logo */
+  width: 80px;
+  height: 80px;
+  margin: 20px auto; /* Centra el logo horizontalmente */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+input, button {
+  width: 80%;
+  padding: 15px;
+  margin: 10px auto; /* Centra los elementos horizontalmente */
+  display: block; /* Asegura que los elementos se apilen verticalmente */
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input {
+  background: #e8e8e8; /* Un color suave para los campos de entrada */
+  color: #333;
+}
+
+button {
+  background: #5c6bc0; /* Un color distintivo para el botón de envío */
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #3949ab;
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 600px) {
+  input, button {
+    width: 90%;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="login-container">
+  <div class="logo"></div>
+  <h2>Acceder al Inventario</h2>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Nombre de usuario" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button type="submit">Acceder</button>
+  </form>
+</div>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var users = {
+      'User1': '1234',
+      'user2': '1234',
+      // Añade más usuarios predefinidos aquí
+    };
+    if(users[username] && users[username] === password) {
+      window.location.href = 'https://decubarincon.github.io/tiendaonline/InventarioDo%C3%B1aLucia.html'; // Reemplaza con tu enlace
+    } else {
+      alert('Datos incorrectos.');
+    }
+  });
+</script>
+</body>
+</html>
