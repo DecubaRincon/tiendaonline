@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ofertas de Doña Lucía</title>
+<link rel="icon" type="image/png" href="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<meta property="og:title" content="Ofertas | Doña Lucía">
+  <meta property="og:description" content="Mira nuestras ofertas...">
+
+  <meta property="og:image" content="https://i.postimg.cc/WzjQsWfb/OIG2.jpg">
+  <meta property="og:url" content="https://ofertasdonalucia.great-site.net/">
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  /*body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fdf1db;
+    color: #8a5a44;
+  }*/
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fdf1db;
+    color: #8a5a44;
+    margin: 0;
+    padding: 0;
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+  }
+  .menu {
+    border: 1px solid #8a5a44;
+    margin: 2rem;
+    padding: 2rem;
+  }
+  .menu-heading {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .menu-section {
+    margin-bottom: 2rem;
+  }
+  .menu-section-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #8a5a44;
+  }
+  .menu-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed #8a5a44;
+    animation: fadeIn 2s ease-in-out;
+  }
+  .menu-item:last-child {
+    border: none;
+  }
+  .menu-icon {
+    color: #8a5a44;
+    margin-right: 0.5rem;
+  }
+  .price {
+    float: right;
+  }
+  
+ /* Estilo base del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  transition: opacity 0.5s ease;
+}
+
+/* Contenido del modal con estilo vintage y lujoso */
+.modal-content {
+  background: linear-gradient(to bottom right, #fffaf0, #f2e2c4);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #c0a080;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  transition: transform 0.5s ease-out;
+  transform: scale(0.9);
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Animación y visibilidad del modal */
+.modal.show {
+  display: block;
+  opacity: 0;
+  animation: fadeInModal 0.5s forwards;
+}
+
+.modal-content.show {
+  animation: scaleUpModal 0.4s forwards;
+}
+
+/* Botón de cierre con estilo vintage */
+.close {
+  color: #755248;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+  color: #d11a2a;
+  cursor: pointer;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 10% auto;
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 15% auto;
+    width: 98%;
+    padding: 10px;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInModal {
+  to { opacity: 1; }
+}
+
+@keyframes scaleUpModal {
+  to { transform: scale(1); }
+}
+
+/* Estilos adicionales aquí */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Ajusta esto según la altura de tu cabecera */
+  }
+  
+  .logo-container img {
+    height: 80px; /* Altura del logo */
+  }
+  /* CSS para ocultar el contador */
+#contador {
+  display: none;
+  
+}
+/*#contador{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+.contacto {
+    padding: 20px;
+    background-color: #fdf1db;
+    border-top: 1px solid #ccc;
+}
+
+.contacto h3 {
+    color: #333;
+    font-size: 1.5em; /* 24px */
+}
+
+.contacto p {
+    color: #666;
+    font-size: 1em; /* 16px */
+}
+
+.contacto ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contacto li {
+    margin: 10px;
+}
+
+.contacto a {
+    text-decoration: none;
+    color: #af7c64;
+    font-weight: bold;
+}
+
+.contacto a:hover {
+    color: #8a5a44;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .contacto {
+        text-align: center;
+    }
+
+    .contacto ul {
+        justify-content: center;
+    }
+
+    .contacto li {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+/* Estilo CSS para un botón compacto */
+.contenedor-boton {
+  text-align: center; /* Centra el botón horizontalmente */
+}
+
+.boton-compartir {
+  background-color: #af7c64; /* Color de fondo del botón */
+  border: none;
+  color: white;
+  padding: 5px 10px; /* Relleno más pequeño para un botón más compacto */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px; /* Bordes redondeados */
+}
+.boton-compartir:hover {
+  background-color: #8a5a44;;
+}
+
+/* Media query para centrar el botón verticalmente solo en pantallas grandes */
+@media (min-width: 768px) {
+  .contenedor-boton {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+}
+
+
+
+</style>
+</head>
+<body onload="showModal()">
+ <!-- <div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">×</span>
+    <h2>¡Promoción Especial!</h2>
+    <p>Disfruta de un 20% de descuento en todos nuestros platos principales esta semana.</p>
+  </div> 
+</div>-->
+
+
+<!-- Modal Structure -->
+<div id="modalPromo1" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>¡Hola!</h2>
+    <p>¡Bienvenido a Doña Lucía! Esperamos disfrutes nuestra oferta y si algo es de su agrado, 
+      no duces en ordenarlo, será atendido lo antes posible... que tengas un gran día.
+    </p>
+  </div>
+</div>
+
+<!--<div id="modalPromo2" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>modalPromo2</h2>
+    <p>Este es un ejemplo de contenido para el modal.</p>
+  </div>
+</div>
+
+<div id="modalPromo3" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>modalPromo3</h2>
+    <p>Este es un ejemplo de contenido para el modal.</p>
+  </div>
+</div>-->
+
+<div class="logo-container">
+  <img src="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png" alt="Logo de Doña Lucía">
+</div>
+<!-- Contenedor para mostrar el contador -->
+<div id="contador">Cargando...</div>
+  <div class="container">
+   
+    
+    <div class="menu">
+      <h1 class="menu-heading">Ofertas Doña Lucia</h1>
+      <div class="menu-section">
+       <!-- <h2 class="menu-section-heading">Platos Principales</h2>
+        <div class="menu-item">
+          <i class="fas fa-utensils menu-icon"></i>
+          Nombre del Plato <span class="price">$10</span>
+        </div>-->
+        <!-- Sección de Pizzas -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Pizzas</h2>
+  <div class="menu-item">
+    <i class="fas fa-pizza-slice menu-icon"></i>
+    Pizza Margarita <span class="price">$12</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-pizza-slice menu-icon"></i>
+    Pizza de Pepperoni <span class="price">$14</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-pizza-slice menu-icon"></i>
+    Pizza Cuatro Quesos <span class="price">$15</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-pizza-slice menu-icon"></i>
+    Pizza Hawaiana <span class="price">$13</span>
+  </div>
+</div>
+        <!-- Continuación de Platos Principales -->
+<!--<div class="menu-item">
+  <i class="fas fa-utensils menu-icon"></i>
+  Solomillo al Grill <span class="price">$18</span>
+</div>
+<div class="menu-item">
+  <i class="fas fa-utensils menu-icon"></i>
+  Pescado Blanco al Limón <span class="price">$16</span>
+</div>-->
+
+
+
+<!-- Sección de Bebidas -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Bebidas</h2>
+  <div class="menu-item">
+    <i class="fas fa-wine-glass-alt menu-icon"></i>
+    Vino Tinto Reserva <span class="price">$8</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-coffee menu-icon"></i>
+    Café <span class="price">$15.00</span>
+  </div>
+</div>
+
+<!-- Sección de Postres -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Postres</h2>
+  <div class="menu-item">
+    <i class="fas fa-cookie menu-icon"></i>
+    Galletas de Chorizo <span class="price">$130.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-cookie menu-icon"></i>
+    Galletas de Mantequilla <span class="price">$120.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-cookie menu-icon"></i>
+    Galletas de Sal <span class="price">$130.00</span>
+  </div>
+</div>
+
+      </div>
+     
+<!-- Sección de Acompañamientos -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Acompañamientos</h2>
+  <div class="menu-item">
+    <i class="fas fa-bread-slice menu-icon"></i>
+    Pan de Ajo Artesanal <span class="price">$5</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-carrot menu-icon"></i>
+    Ensalada de la Huerta <span class="price">$7</span>
+  </div>
+</div>
+      <!-- Sección de Bebidas y Dulces -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Bebidas y Dulces</h2>
+  
+  <!-- Refrescos Enlatados -->
+  <div class="menu-item">
+    <i class="fas fa-glass-whiskey menu-icon"></i>
+    Refresco de Cola / Vaso <span class="price">$2</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-soda menu-icon"></i>
+    Refresco de Naranja <span class="price">$2</span>
+  </div>
+  
+  <!-- Cervezas Enlatadas -->
+  <div class="menu-item">
+    <i class="fas fa-beer menu-icon"></i>
+    Cerveza Lager <span class="price">$3</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-beer menu-icon"></i>
+    Cerveza Stout <span class="price">$3</span>
+  </div>
+  
+  <!-- Confituras -->
+  <div class="menu-item">
+    <i class="fas fa-candy-cane menu-icon"></i>
+    Mermelada de Fresa <span class="price">$4</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-candy-cane menu-icon"></i>
+    Mermelada de Durazno <span class="price">$4</span>
+  </div>
+  
+  <!-- Caramelos -->
+  <div class="menu-item">
+    <i class="fas fa-hard-hat menu-icon"></i>
+    Caramelos de Menta <span class="price">$1</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-hard-hat menu-icon"></i>
+    Caramelos de Eucalipto <span class="price">$1</span>
+  </div>
+  
+  <!-- Botellas de Ron -->
+  <div class="menu-item">
+    <i class="fas fa-wine-bottle menu-icon"></i>
+    Ron Añejo <span class="price">$20</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-wine-bottle menu-icon"></i>
+    Ron Blanco <span class="price">$18</span>
+  </div>
+</div>
+
+    </div>
+    
+
+  </div>
+  
+  <div class="contacto">
+    <h3>Contáctanos</h3>
+    <p>¿Tienes alguna pregunta o quieres hacer un pedido? ¡No dudes en contactarnos!</p>
+    <ul>
+        <li><a href="https://wa.me/5355189657" target="_blank">Envíanos un WhatsApp</a></li>
+        <li><a href="sms:+5355189657">Envía un SMS</a></li>
+        <li><a href="tel:+5355189657">Llámanos directamente</a></li>
+    </ul>
+</div>
+
+  <!-- HTML para el botón de compartir -->
+  <div class="contenedor-boton">
+    <button class="boton-compartir" onclick="compartirPagina()">Compartir Ofertas</button>
+  </div>
+  
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.7.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+function compartirPagina() {
+  // Aquí puedes agregar la lógica para compartir la página
+  // Por ejemplo, usando la Web Share API si está disponible
+  if (navigator.share) {
+    navigator.share({
+      title: 'Título de la página',
+      url: window.location.href
+    }).then(() => {
+      console.log('¡Página compartida con éxito!');
+    })
+    .catch(console.error);
+  } else {
+    // Fallback para navegadores que no soportan la Web Share API
+    alert('Tu navegador no soporta la función de compartir.');
+  }
+}
+
+// Función para mostrar un modal específico por id
+function showModal(idModal) {
+  var modal = document.getElementById(idModal);
+  var modalContent = modal.querySelector('.modal-content');
+  modal.classList.add('show');
+  modalContent.classList.add('show');
+}
+
+
+
+// Función para actualizar el contador de visitas y mostrar modales específicos
+function actualizarContador() {
+  // Obtener el contador actual de localStorage o inicializarlo en 0
+  var contador = localStorage.getItem('contadorVisitas') || 0;
+  
+  // Incrementar el contador
+  contador++;
+  
+  // Guardar el nuevo valor del contador en localStorage
+  localStorage.setItem('contadorVisitas', contador);
+  
+  // Mostrar el contador en la página
+  document.getElementById('contador').textContent = 'Número de visitas: ' + contador;
+
+  // Verificar el número de visitas para mostrar modales específicos
+  if (contador === 1) {
+    showModal('modalPromo1');
+  } else if (contador === 133) {
+    showModal('modalPromo2');
+  } else if (contador === 137) {
+    showModal('modalPromo3');
+  }
+  // Puedes agregar más condiciones según sea necesario
+}
+
+// Llamar a las funciones al cargar la página
+window.onload = function() {
+  actualizarContador();
+  showModal('myModal'); // Asegúrate de que este es el ID de tu modal inicial
+};
+
+// Get the modal
+var modal = document.getElementById('modalPromo1, modalPromo2, modalPromo3');
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName('close')[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = 'none';
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+}
+// Función para cerrar todos los modales
+function cerrarModales() {
+  var modales = document.querySelectorAll('.modal');
+  modales.forEach(function(modal) {
+    modal.style.display = 'none';
+  });
+}
+
+// Asignar evento de clic a todas las 'X' de cierre
+document.querySelectorAll('.close').forEach(function(element) {
+  element.onclick = cerrarModales;
+});
+
+// Cerrar modales al hacer clic fuera de ellos
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal')) {
+    cerrarModales();
+  }
+};
+// Llamar a las funciones al cargar la página con un retraso definido
+window.onload = function() {
+
+  // Retraso en milisegundos (ejemplo: 5000 milisegundos equivalen a 5 segundos)
+  var tiempoDeRetraso = 1000; // Ajusta este valor al tiempo que desees
+
+  setTimeout(function() {
+    actualizarContador();
+    showModal('myModal'); // Asegúrate de que este es el ID de tu modal inicial
+  }, tiempoDeRetraso);
+};
+
+
+</script>
+</body>
+</html>
