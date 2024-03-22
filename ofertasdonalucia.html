@@ -4,15 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ofertas de Doña Lucía</title>
-<link rel="icon" type="image/png" href="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png"/>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <meta property="og:title" content="Ofertas | Doña Lucía">
   <meta property="og:description" content="Mira nuestras ofertas...">
 
-  <meta property="og:image" content="https://i.postimg.cc/nLvkjkX9/MEta-Etiquetajpg.jpg">
+  <meta property="og:image" content="https://i.postimg.cc/WzjQsWfb/OIG2.jpg">
   <meta property="og:url" content="https://ofertasdonalucia.great-site.net/">
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png"/>
 <style>
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -37,7 +38,10 @@ body {
     border: 1px solid #8a5a44;
     margin: 2rem;
     padding: 2rem;
+    position: relative; /* Añadido para posicionar el texto desplazante relativo al menú */
+    overflow: hidden; /* Asegura que el texto no se desborde fuera del borde */
   }
+  
   .menu-heading {
     font-family: 'Dancing Script', cursive;
     text-align: center;
@@ -256,10 +260,48 @@ body {
 }
 
 
+.scrolling-text {
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    top: 20px;
+  
+  }
+  .scrolling-text h1 {
+    display: inline-block;
+    padding-left: 100%;
+    
+    animation: scroll-text 20s linear infinite;
+  }
+  @keyframes scroll-text {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  .scrolling-text h1 {
+  font-size: 1.5rem; /* Tamaño inicial del texto */
+}
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .scrolling-text h1 {
+    font-size: 1rem; /* Tamaño más pequeño para pantallas estrechas */
+    scroll-margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrolling-text h1 {
+    font-size: 0.75rem; /* Tamaño aún más pequeño para pantallas muy estrechas */
+  }
+}
 
 </style>
 </head>
 <body onload="showModal()">
+  
  <!-- <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">×</span>
@@ -302,34 +344,40 @@ body {
 <!-- Contenedor para mostrar el contador -->
 <div id="contador">Cargando...</div>
   <div class="container">
-   
+    
     
     <div class="menu">
-      <h1 class="menu-heading">Ofertas Doña Lucia</h1>
+      <div class="scrolling-text">
+        <h1>¡Servicio de mensajería por un costo minimo de 100cup, el costo incrementa según la lejanía y complegidad del lugar de entrega!</h1>
+      </div>
+      <h1 class="menu-heading">Ofertas Doña Lucía</h1>
       <div class="menu-section">
+        
        <!-- <h2 class="menu-section-heading">Platos Principales</h2>
         <div class="menu-item">
           <i class="fas fa-utensils menu-icon"></i>
           Nombre del Plato <span class="price">$10</span>
         </div>-->
+
+
         <!-- Sección de Pizzas -->
 <div class="menu-section">
   <h2 class="menu-section-heading">Pizzas</h2>
   <div class="menu-item">
     <i class="fas fa-pizza-slice menu-icon"></i>
-    Pizza Margarita <span class="price">$12</span>
+    Pizza de Queso <span class="price">$100.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-pizza-slice menu-icon"></i>
-    Pizza de Pepperoni <span class="price">$14</span>
+    Pizza de Salchicha <span class="price">$140.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-pizza-slice menu-icon"></i>
-    Pizza Cuatro Quesos <span class="price">$15</span>
+    Pizza de Jamón  <span class="price">$150.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-pizza-slice menu-icon"></i>
-    Pizza Hawaiana <span class="price">$13</span>
+    Pizza de vejetales y Queso extra <span class="price">$150.00</span>
   </div>
 </div>
         <!-- Continuación de Platos Principales -->
@@ -341,25 +389,74 @@ body {
   <i class="fas fa-utensils menu-icon"></i>
   Pescado Blanco al Limón <span class="price">$16</span>
 </div>-->
+<!-- Sección de Hamburguesas -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Hamburguesas</h2>
+  <div class="menu-item">
+    <i class="fas fa-hamburger menu-icon"></i>
+    Hamburguesa Clásica <span class="price">$120.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-hamburger menu-icon"></i>
+    Hamburguesa con Queso <span class="price">$130.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-hamburger menu-icon"></i>
+    Hamburguesa Doble Carne <span class="price">$160.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-hamburger menu-icon"></i>
+    Hamburguesa Vegetariana <span class="price">$110.00</span>
+  </div>
+</div>
+
+<!-- Sección de Bocaditos -->
+<div class="menu-section">
+  <h2 class="menu-section-heading">Bocaditos</h2>
+  <div class="menu-item">
+    <i class="fas fa-bread-slice menu-icon"></i>
+    Bocadito de Cerdo Azado <span class="price">$200.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-bread-slice menu-icon"></i>
+    Bocadito de Jamón <span class="price">$90.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-bread-slice menu-icon"></i>
+    Pan con Pasta <span class="price">$50.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-bread-slice menu-icon"></i>
+    Croquetas de Pollo con pan <span class="price">$60.00</span>
+  </div>
+  <div class="menu-item">
+    <i class="fas fa-bread-slice menu-icon"></i>
+    Croquetas de Jamón <span class="price">$60.00</span>
+  </div>
+</div>
 
 
 
 <!-- Sección de Bebidas -->
 <div class="menu-section">
   <h2 class="menu-section-heading">Bebidas</h2>
-  <div class="menu-item">
-    <i class="fas fa-wine-glass-alt menu-icon"></i>
-    Vino Tinto Reserva <span class="price">$8</span>
+ <div class="menu-item">
+    <i class="fas fa-glass-whiskey menu-icon"></i>
+    Refresco de / Vaso <span class="price">$20.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-coffee menu-icon"></i>
     Café <span class="price">$15.00</span>
   </div>
+  <div class="menu-item">
+    <i class="fas fa-coffee menu-icon"></i>
+    Café Expresso Importado<span class="price">$100.00</span>
+  </div>
 </div>
 
-<!-- Sección de Postres -->
+<!-- Sección de Confituras Nacionales -->
 <div class="menu-section">
-  <h2 class="menu-section-heading">Postres</h2>
+  <h2 class="menu-section-heading">Confituras Nacionales</h2>
   <div class="menu-item">
     <i class="fas fa-cookie menu-icon"></i>
     Galletas de Chorizo <span class="price">$130.00</span>
@@ -377,7 +474,7 @@ body {
       </div>
      
 <!-- Sección de Acompañamientos -->
-<div class="menu-section">
+<!-- <div class="menu-section">
   <h2 class="menu-section-heading">Acompañamientos</h2>
   <div class="menu-item">
     <i class="fas fa-bread-slice menu-icon"></i>
@@ -389,11 +486,11 @@ body {
   </div>
 </div>
       <!-- Sección de Bebidas y Dulces -->
-<div class="menu-section">
+<!--<div class="menu-section">
   <h2 class="menu-section-heading">Bebidas y Dulces</h2>
   
   <!-- Refrescos Enlatados -->
-  <div class="menu-item">
+  <!--<div class="menu-item">
     <i class="fas fa-glass-whiskey menu-icon"></i>
     Refresco de Cola / Vaso <span class="price">$2</span>
   </div>
@@ -403,7 +500,7 @@ body {
   </div>
   
   <!-- Cervezas Enlatadas -->
-  <div class="menu-item">
+  <!--<div class="menu-item">
     <i class="fas fa-beer menu-icon"></i>
     Cerveza Lager <span class="price">$3</span>
   </div>
@@ -413,7 +510,7 @@ body {
   </div>
   
   <!-- Confituras -->
-  <div class="menu-item">
+  <!--<div class="menu-item">
     <i class="fas fa-candy-cane menu-icon"></i>
     Mermelada de Fresa <span class="price">$4</span>
   </div>
@@ -423,7 +520,7 @@ body {
   </div>
   
   <!-- Caramelos -->
-  <div class="menu-item">
+  <!--<div class="menu-item">
     <i class="fas fa-hard-hat menu-icon"></i>
     Caramelos de Menta <span class="price">$1</span>
   </div>
@@ -433,13 +530,16 @@ body {
   </div>
   
   <!-- Botellas de Ron -->
-  <div class="menu-item">
+  <!--<div class="menu-item">
     <i class="fas fa-wine-bottle menu-icon"></i>
     Ron Añejo <span class="price">$20</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-wine-bottle menu-icon"></i>
     Ron Blanco <span class="price">$18</span>
+  </div> -->
+  <div class="scrolling-text">
+    <h1>¡Servicio de mensajería por un costo minimo de 100cup, el costo incrementa según la lejanía y complegidad del lugar de entrega!</h1>
   </div>
 </div>
 
