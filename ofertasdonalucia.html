@@ -298,6 +298,193 @@ body {
   }
 }
 
+
+
+
+/* Estilo vintage general para el modal */
+.modalConfituras {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+}
+
+.modalConfituras-content {
+  background-color: #fdf1db;
+  margin: 10% 10px;
+  padding: 20px;
+  border: 1px solid #c0a080;
+  width: calc(100% - 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+/* Centrar el botón horizontalmente */
+#btnModalConfituras {
+  display: block; /* Hace que el botón sea un bloque para permitir el centrado */
+  margin-left: auto;
+  margin-right: auto;
+}
+button {
+  background-color: #af7c64;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+ }
+
+button:hover {
+  background-color: #8a5a44;
+}
+
+.closeConfituras {
+  color: #755248;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeConfituras:hover,
+.closeConfituras:focus {
+  color: #d11a2a;
+  cursor: pointer;
+}
+
+/* Estilos para la galería de imágenes */
+.galeriaConfituras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.itemConfitura {
+  flex: 0 1 calc(25% - 20px);
+  margin: 10px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+}
+
+.itemConfitura:hover {
+  transform: scale(1.05);
+}
+
+.itemConfitura img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: filter 0.3s ease;
+}
+
+.itemConfitura img:hover {
+  filter: sepia(0.6);
+}
+
+.modalConfituras-content h2 {
+  text-align: center; /* Centra el texto del h2 horizontalmente */
+}
+
+.precioConfitura {
+  background-color: #f7eedc;
+  color: #755248;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: bold;
+}
+.precioConfitura {
+  display: block; /* Hace que el precio sea un bloque para permitir el centrado */
+  margin: 0 auto; /* Centra el bloque horizontalmente */
+  width: fit-content; /* Ajusta el ancho al contenido del precio */
+}
+
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .itemConfitura {
+    flex: 0 1 calc(33.333% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .itemConfitura {
+    flex: 0 1 calc(33.333% - 20px);
+  }
+}
+/* Contenedor de los botones */
+.contenedor-botones {
+  display: flex; /* Utiliza flexbox para alinear los elementos horizontalmente */
+}
+
+/* Botones individuales */
+#btnModalConfituras, #btnModalConfituras2 {
+  margin-right: 10px; /* Añade un margen a la derecha si deseas separarlos un poco */
+}
+/* CSS para la descripción oculta */
+.descripcionConfitura {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.descripcionConfitura {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
+  background-color: #fdf6e3; /* Color de fondo estilo papel antiguo */
+  color: #755248; /* Color de texto marrón suave */
+  font-family: 'Times New Roman', Times, serif; /* Fuente con estilo clásico */
+  border: 1px solid #deb887; /* Borde color bronce */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  z-index: 1;
+  max-width: 250px; /* Ancho máximo para la descripción */
+  text-align: justify;
+  border-radius: 8px; /* Bordes redondeados para un look suave */
+}
+
+.descripcionVisible {
+  display: block;
+  opacity: 1;
+}
+
+/* Estilo para el título dentro de la descripción */
+.descripcionConfitura h3 {
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+  color: #6e503b;
+}
+
+/* Estilo para simular un sello o marca de agua */
+.descripcionConfitura::after {
+  content: 'Auténtico';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8em;
+  color: rgba(117, 82, 72, 0.5);
+  transform: rotate(-45deg);
+}
+
+
 </style>
 </head>
 <body onload="showModal()">
@@ -415,24 +602,24 @@ body {
   <h2 class="menu-section-heading">Bocaditos</h2>
   <div class="menu-item">
     <i class="fas fa-bread-slice menu-icon"></i>
-    Bocadito de Cerdo Azado <span class="price">$200.00</span>
+    Boc. de Cerdo<span class="price">$200.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-bread-slice menu-icon"></i>
-    Bocadito de Jamón <span class="price">$90.00</span>
+    Boc. de Jamón <span class="price">$90.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-bread-slice menu-icon"></i>
     Pan con Pasta <span class="price">$50.00</span>
   </div>
-  <div class="menu-item">
+  <!--<div class="menu-item">
     <i class="fas fa-bread-slice menu-icon"></i>
     Croquetas de Pollo con pan <span class="price">$60.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-bread-slice menu-icon"></i>
     Croquetas de Jamón <span class="price">$60.00</span>
-  </div>
+  </div>-->
 </div>
 
 
@@ -442,7 +629,7 @@ body {
   <h2 class="menu-section-heading">Bebidas</h2>
  <div class="menu-item">
     <i class="fas fa-glass-whiskey menu-icon"></i>
-    Refresco de / Vaso <span class="price">$20.00</span>
+    Refresco de Vaso <span class="price">$20.00</span>
   </div>
   <div class="menu-item">
     <i class="fas fa-coffee menu-icon"></i>
@@ -450,7 +637,7 @@ body {
   </div>
   <div class="menu-item">
     <i class="fas fa-coffee menu-icon"></i>
-    Café Expresso Importado<span class="price">$100.00</span>
+    Café Importado<span class="price">$100.00</span>
   </div>
 </div>
 
@@ -538,13 +725,70 @@ body {
     <i class="fas fa-wine-bottle menu-icon"></i>
     Ron Blanco <span class="price">$18</span>
   </div> -->
+   <!-- Botón para abrir el nuevo modal de confituras -->
+   <div class="contenedor-botones">
+    <button id="btnModalConfituras">Ver Confituras</button>
+    <!--<button id="btnModalConfituras2">Ver Confituras2</button>-->
+  </div>
+  
   <div class="scrolling-text">
-    <h1>¡Servicio de mensajería por un costo minimo de 100cup, el costo incrementa según la lejanía y complegidad del lugar de entrega!</h1>
+    <h1>¡Servicio de mensajería por un costo minimo de 100cup dentro del municipio, el costo incrementa según la lejanía y complegidad del lugar de entrega!</h1>
   </div>
 </div>
 
     </div>
+   
+
+<!-- El nuevo Modal de Confituras -->
+<div id="modalConfituras" class="modalConfituras">
+  <!-- Contenido del modal -->
+  <div class="modalConfituras-content">
+    <span class="closeConfituras">×</span>
+    <h2>Confituras</h2>
+    <div class="galeriaConfituras">
+      <!-- Elementos de la galería con imagen y precio -->
+      <div class="itemConfitura">
+        <img src="https://i.postimg.cc/kgFLNkxt/61925ade4e5093814a90ba246a86a8d7.jpg" alt="Confitura 1" 
+        onmouseover="mostrarDescripcionConCursor(this)" onmouseout="ocultarDescripcionConCursor(this)">
+        <p class="precioConfitura">$100.00</p>
+        <div class="descripcionConfitura">Descripción de la Confitura 1</div>
+      </div>
+      <div class="itemConfitura">
+        <img src="https://i.postimg.cc/kgFLNkxt/61925ade4e5093814a90ba246a86a8d7.jpg" alt="Confitura 1" 
+        onmouseover="mostrarDescripcionConCursor(this)" onmouseout="ocultarDescripcionConCursor(this)">
+        <p class="precioConfitura">$100.00</p>
+        <div class="descripcionConfitura">Descripción de la Confitura 1</div>
+      </div>
+      <div class="itemConfitura">
+        <img src="https://i.postimg.cc/kgFLNkxt/61925ade4e5093814a90ba246a86a8d7.jpg" alt="Confitura 1" 
+        onmouseover="mostrarDescripcionConCursor(this)" onmouseout="ocultarDescripcionConCursor(this)">
+        <p class="precioConfitura">$100.00</p>
+        <div class="descripcionConfitura">Descripción de la Confitura 1</div>
+      </div>
+      <div class="itemConfitura">
+        <img src="https://i.postimg.cc/kgFLNkxt/61925ade4e5093814a90ba246a86a8d7.jpg" alt="Confitura 1" 
+        onmouseover="mostrarDescripcionConCursor(this)" onmouseout="ocultarDescripcionConCursor(this)">
+        <p class="precioConfitura">$100.00</p>
+        <div class="descripcionConfitura">Descripción de la Confitura 1</div>
+      </div>
+      <div class="itemConfitura">
+        <img src="https://i.postimg.cc/kgFLNkxt/61925ade4e5093814a90ba246a86a8d7.jpg" alt="Confitura 1" 
+        onmouseover="mostrarDescripcionConCursor(this)" onmouseout="ocultarDescripcionConCursor(this)">
+        <p class="precioConfitura">$100.00</p>
+        <div class="descripcionConfitura">Descripción de la Confitura 1</div>
+      </div>
+      <div class="itemConfitura">
+        <img src="https://i.postimg.cc/kgFLNkxt/61925ade4e5093814a90ba246a86a8d7.jpg" alt="Confitura 1" 
+        onmouseover="mostrarDescripcionConCursor(this)" onmouseout="ocultarDescripcionConCursor(this)">
+        <p class="precioConfitura">$100.00</p>
+        <div class="descripcionConfitura">Descripción de la Confitura 1</div>
+      </div>
+      <!-- Repite el bloque anterior para cada confitura -->
+    </div>
     
+  </div>
+</div>
+
 
   </div>
   
@@ -568,6 +812,8 @@ body {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.7.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
+ 
+
 function compartirPagina() {
   // Aquí puedes agregar la lógica para compartir la página
   // Por ejemplo, usando la Web Share API si está disponible
@@ -674,6 +920,43 @@ window.onload = function() {
     showModal('myModal'); // Asegúrate de que este es el ID de tu modal inicial
   }, tiempoDeRetraso);
 };
+// Obtén el modal
+var modalConfituras = document.getElementById('modalConfituras');
+
+// Obtén el botón que abre el modal
+var btnModalConfituras = document.getElementById('btnModalConfituras');
+
+// Obtén el elemento <span> que cierra el modal
+var spanConfituras = document.getElementsByClassName('closeConfituras')[0];
+
+// Cuando el usuario haga clic en el botón, abre el modal
+btnModalConfituras.onclick = function() {
+  modalConfituras.style.display = 'block';
+}
+
+// Cuando el usuario haga clic en <span> (x), cierra el modal
+spanConfituras.onclick = function() {
+  modalConfituras.style.display = 'none';
+}
+
+// Cuando el usuario haga clic en cualquier lugar fuera del modal, cierra el modal
+window.onclick = function(event) {
+  if (event.target == modalConfituras) {
+    modalConfituras.style.display = 'none';
+  }
+}
+
+
+ // JavaScript para mostrar y ocultar la descripción con el cursor
+function mostrarDescripcionConCursor(imagen) {
+  var descripcion = imagen.nextElementSibling.nextElementSibling; // Asume que la descripción sigue al precio
+  descripcion.classList.add('descripcionVisible');
+}
+
+function ocultarDescripcionConCursor(imagen) {
+  var descripcion = imagen.nextElementSibling.nextElementSibling; // Asume que la descripción sigue al precio
+  descripcion.classList.remove('descripcionVisible');
+}
 
 
 </script>
