@@ -633,50 +633,81 @@ footer .foo-row .foo-col ul li a:hover{
     }
 
     /* menu */
-    .header-menu-movil{
-        background: var(--color-principal);
+    .header-menu-movil {
+        background: #1a1a1a; /* Fondo oscuro para un look moderno */
+        color: #ffffff; /* Texto en blanco para contraste */
         position: fixed;
-
-        display: block;
-        padding: 40px;
         top: 0;
         right: 0;
         width: 100%;
         height: 100vh;
         z-index: 1000;
-        transition: all .3s ease;
-        transform: translate(-100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
     }
-
-    .header-menu-movil.active{
-        transform: translate(0%);
-    }
-
-    .header-menu-movil .cerrar-menu{
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        line-height: 45px;
-        border-radius: 50%;
-        border: none;
-        background: #fff;
-        font-size: 18px;
-        color: var(--color-negro);
-    }
-
-    .header-menu-movil ul li{
-        position: relative;
-        margin: 10px 0px;
-    }
-
-    .header-menu-movil ul li a{
-        display: inline-block;
-        color: #fff;
     
+    .header-menu-movil.active {
+        transform: translateX(0);
     }
-}
+    
+    .header-menu-movil .cerrar-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    .header-menu-movil ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+    
+    .header-menu-movil ul li {
+        display: block; /* Establece cada elemento de la lista como un bloque */
+        width: 100%; /* Ocupa el ancho completo del contenedor */
+        margin-bottom: 10px; /* Añade un espacio debajo de cada elemento */
+    }
+    
+    
+    .header-menu-movil ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 18px;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+    }
+    
+    .header-menu-movil ul li a:hover {
+        color: #c0a062; /* Color dorado al pasar el mouse */
+    }
+    .cerrar-menu {
+        font-size: 24px; /* Tamaño grande para fácil interacción */
+        color: #fff; /* Color blanco para contraste con el fondo */
+        background-color: #000; /* Fondo negro para un look moderno */
+        border: 2px solid #fff; /* Borde blanco para destacar la 'X' */
+        border-radius: 50%; /* Forma circular */
+        width: 40px; /* Ancho fijo */
+        height: 40px; /* Alto fijo */
+        display: flex; /* Utiliza flexbox para centrar el contenido */
+        align-items: center; /* Centra verticalmente */
+        justify-content: center; /* Centra horizontalmente */
+        cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para un efecto elevado */
+        transition: all 0.3s ease; /* Transición suave para interacciones */
+    }
+    
+    .cerrar-menu:hover {
+        color: #000; /* Cambia el color del texto al pasar el mouse */
+        background-color: #fff; /* Cambia el fondo al pasar el mouse */
+        transform: rotate(90deg); /* Rota la 'X' para un efecto dinámico */
+    }
+    
 
 @media screen and (max-width: 400px){
     .hm-banner{
