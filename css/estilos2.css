@@ -871,4 +871,10 @@ footer .foo-row .foo-col ul li a:hover{
       display: none;
   }
  
-  
+  /* Ocultar el texto en pantallas menores a 768px de ancho */
+  @media screen and (max-width: 768px) {
+    #texto-recomendacion {
+        text-align: center;
+      display: none;
+    }
+  }
