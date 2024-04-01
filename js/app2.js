@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
     message += `Mi dirección es: Calle ${street}, entre ${between}, #${number}.\n`;
     message += `Espero su respuesta... saludos.\n`;
   
-    const whatsappLink = `https://api.whatsapp.com/send?phone=5350545976&text=${encodeURIComponent(message)}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=5363658636&text=${encodeURIComponent(message)}`;
   
     window.open(whatsappLink, '_blank');
   };
