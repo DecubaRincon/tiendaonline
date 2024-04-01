@@ -206,8 +206,23 @@ a.icon-link {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-
-
+ /* Estilos para el botón de descarga */
+ .descarga-app-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #28a745;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    /* Estilos para el icono dentro del botón */
+    .icono-btn {
+        height: auto;
+        width: 1em;
+        margin-left: 0.5em;
+    }
 
 </style>
   <meta property="og:title" content="Doña Lucía | Escoja sus productos">
@@ -1531,7 +1546,7 @@ a.icon-link {
                     <p class="text-white"><i class="bi bi-telephone"></i> +53 50545976</p>
                     <p class="text-white"><i class="bi bi-envelope"></i> <a href="mailto:decubarincon@gmail.com" class="text-white">decubarincon@gmail.com</a></p>
                     <p class="text-white"><i class="bi bi-facebook"></i> <a href="https://www.fb.com/l/6lp1kJRRR" class="text-white">Tienda en Facebook</a></p>
-                           <!--<li><a href="http://">Productos</a></li>
+                           <li><a href="http://">Productos</a></li>
                            <li><a href="http://">Campañas</a></li>
                            
                           
@@ -1542,14 +1557,23 @@ a.icon-link {
                     </div>
 
                 </div>
-
+                <div style="display: flex; justify-content: center; align-items: center; min-height: 5vh; padding: 20px;">
+                    <!-- Botón de descarga con icono -->
+                    <a href="https://1drv.ms/u/s!AhoWUn80fo04aybPu1y7NCKrguQ?e=RfmrOo" class="descarga-app-btn">
+                        Descarga nuestra App
+                        <!-- Icono al lado derecho del texto -->
+                        <img src="https://i.postimg.cc/cHr4Gmr3/Logo-Do-a-Lucia-rojo.png" alt="Icono" class="icono-btn">
+                    </a>
+                </div>
             </div>
 
         </footer>
 
         <div class="foo-copy">
-            <div class="container">
+            <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+                
                 <p>Doña Lucía © Todos los derechos reservados</p>
+                
             </div>
         </div>
   
