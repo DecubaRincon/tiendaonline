@@ -878,3 +878,93 @@ footer .foo-row .foo-col ul li a:hover{
       display: none;
     }
   }
+}
+/* Estilo base para el modal */
+#product-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1050; /* Sobre otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Permite scroll si es necesario */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilo para el diálogo del modal */
+  #product-modal .modal-dialog {
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  /* Cuando el modal se muestra, aplicamos estos estilos */
+  #product-modal.show .modal-dialog {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  /* Estilo para el contenido del modal */
+  #product-modal .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 80%; /* Ancho al 80% del .modal-dialog */
+    max-width: 700px; /* Máximo ancho del contenido */
+    pointer-events: auto; /* Permite interacción */
+    background-color: #fff; /* Fondo blanco */
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    margin: auto; /* Centrado automáticamente */
+  }
+  
+  /* Estilo para el cuerpo del modal */
+  #product-modal .modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
+  }
+  
+  /* Estilo para la imagen dentro del modal */
+  #product-modal .modal-body img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Asegura que la imagen no tenga margen extra */
+    margin: auto; /* Centra la imagen */
+    animation-name: zoom; /* Nombre de la animación */
+    animation-duration: 0.6s; /* Duración de la animación */
+  }
+  
+  @keyframes zoom {
+    from {transform: scale(0);} /* Inicia con la imagen pequeña */
+    to {transform: scale(1);} /* Termina con la imagen a tamaño normal */
+  }
+  
+  /* Estilo para pantallas más pequeñas */
+  @media only screen and (max-width: 700px){
+    #product-modal .modal-content {
+      width: 100%; /* Ancho completo en pantallas pequeñas */
+    }
+  }
+  
+
+  #anuncio-modalimagen .modal-content {
+    border: none; /* Elimina los bordes del contenido del modal */
+    background: transparent; /* Hace que el fondo del contenido del modal sea transparente */
+}
+
+#anuncio-modalimagen .modal-body {
+    padding: 0; /* Elimina el padding del cuerpo del modal para que no haya espacio alrededor de la imagen */
+}
+
+#anuncio-modalimagen .img-fluid {
+    display: block; /* Asegura que la imagen se muestre como un bloque y ocupe todo el ancho disponible */
+    width: 100%; /* Hace que la imagen se estire para ocupar todo el ancho del modal */
+    height: auto; /* Mantiene la proporción de la imagen */
+    
+}
