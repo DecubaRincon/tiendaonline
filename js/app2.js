@@ -2,11 +2,11 @@
 function generarCupon() {
   var longitud = 8; // Reducimos la longitud a 8 porque añadiremos 'r' al principio y '10' al final
   var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  var cupon = 'r'; // Inicializamos el cupón con 'r'
+  var cupon = 'E'; // Inicializamos el cupón con 'r'
   for ( var i = 0; i < longitud; i++ ) {
     cupon += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
   }
-  cupon += '10'; // Añadimos '10' al final
+  cupon += '35'; // Añadimos '10' al final
   return cupon;
 }
 
@@ -306,9 +306,9 @@ if(localStorage.getItem('visitCount')) {
     // Activar el otro modal en la cuarta visita
     var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
     otroModal.show();
-  } else if (count == 6) {
+  } else if (count == 4) {
     // Activar el otro modal en la cuarta visita
-    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalx'), {});
+    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modal'), {});
     otroModal.show();
   }
 } else {
