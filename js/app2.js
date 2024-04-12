@@ -308,7 +308,7 @@ if(localStorage.getItem('visitCount')) {
     otroModal.show();
   } else if (count == 4) {
     // Activar el otro modal en la cuarta visita
-    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modal'), {});
+    var otroModal = new bootstrap.Modal(document.getElementById('anuncio-modalimagen'), {});
     otroModal.show();
   }
 } else {
