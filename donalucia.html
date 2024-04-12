@@ -224,6 +224,44 @@ a.icon-link {
         margin-left: 0.5em;
     }
 
+
+/* Estilos del modal */
+.btn-elegant {
+  /* Estilos para tu botón aquí */
+}
+
+.product-modal-content {
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+#productoModal.show .product-modal-content {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.product-modal-header, .product-modal-footer {
+  /* Estilos para el encabezado y pie de página del modal aquí */
+}
+
+.btn-product-close {
+  /* Estilos para el botón de cerrar aquí */
+}
+
+.product-modal-body {
+  /* Estilos para el cuerpo del modal aquí */
+}
+
+.product-image {
+  /* Estilos para la imagen del producto aquí */
+}
+
+.btn-product-dismiss, .btn-product-action {
+  /* Estilos para los botones de acción aquí */
+}
+
+
 </style>
   <meta property="og:title" content="Doña Lucía | Escoja sus productos">
   <meta property="og:description" content="Entérate de nuestras ofertas diarias...">
@@ -300,18 +338,25 @@ a.icon-link {
                 <li><a href="./registro2.html">Noticias y Ofertas</a></li>
                <!-- <li><a href="./listadeproductos.html">Lista de productos</a></li>
                 <li><a href="./nosotros.html">Nosotros</a></li>
-                <li><a href="./contacto.html">Contacto</a></li>
-                <li><button id="reset-button">Reiniciar contador</button></a></li>-->
+                <li><a href="./contacto.html">Contacto</a></li>-->
+               <!-- <li><button id="reset-button">Reiniciar contador</button></a></li>-->
                 
                 
            
             </ul>
         </div>
 
+
+  
+  
+  
+  
+  
+
        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
             Abrir modal
           </button> -->  
-          <!-- Modal Anuncio -->
+          <!-- Modal Anuncio --
        <div class="modal fade" id="anuncio-modal" tabindex="-1" aria-labelledby="anuncio-modal-label" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -334,7 +379,7 @@ a.icon-link {
                 </div>
               </div>
             </div>
-          </div>
+          </div>  -->        
 
 
         <!-- Modal Anuncio -->
@@ -363,16 +408,16 @@ a.icon-link {
           </div>  -->
 
           <!-- Modal anuncio imagen -->
-      <!--  <div class="modal fade" id="anuncio-modalimagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="anuncio-modalimagen" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body"> 
                         
-                      <img src="https://i.postimg.cc/9fcg5k0v/RUJjf-TLHTMG2l-Ja2y-LPq-w.jpg" class="img-fluid" alt="Descripción de la imagen">
+                      <img src="https://i.postimg.cc/ryjh7f3j/MOdal2.png" class="img-fluid" alt="Descripción de la imagen">
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div> 
 
       <!--  <div class="modal fade add-to-cart cart" id="productodal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -405,8 +450,8 @@ a.icon-link {
           </div>-->
 
 
-<!-- ModalProduct 1 -->
-<!--<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+<!-- ModalProduct 1 --
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-body product-item card">
@@ -470,7 +515,7 @@ a.icon-link {
         
   
 
-<!-- Segundo modal: formulario de compra -->
+
 <!-- Segundo modal: formulario de compra con estilo diferente -->
 <div class="modal fade top-right" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
