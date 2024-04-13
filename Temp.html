@@ -353,12 +353,31 @@
   cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
 }
 
+
+.rotating-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: #333131;
+  opacity: 0; /* Inicia con opacidad 0 para el efecto de fundido */
+  transition: opacity 1s ease-in-out;
+}
+
+/* Estilo para mostrar el texto */
+.show-text {
+  opacity: 1;
+}
+
 </style>
 </head>
 <body>
 
 <nav class="navbar" id="navbar">
   <div class="container-fluid">
+    <div id="rotatingText" class="rotating-text">Confituras</div>
+    
      <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
@@ -373,9 +392,7 @@
 <div class="full-screen-nav" id="fullScreenNav">
   <ul>
     <li><a href="#">Inicio</a></li>
-    <li><a href="#">Menú</a></li>
-    <li><a href="#">Reservas</a></li>
-    <li><a href="#">Contacto</a></li>
+    
   </ul>
   <span class="close-menu" onclick="toggleMenu()">×</span>
 </div>
@@ -728,6 +745,27 @@ const sendToWhatsApp = () => {
     }
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const rotatingText = document.getElementById('rotatingText');
+  const texts = ['Confituras', 'Pizzas', 'Arroz'];
+  let currentIndex = 0;
+
+  setInterval(() => {
+    // Remueve la clase 'show-text' para iniciar la transición de desaparición
+    rotatingText.classList.remove('show-text');
+    
+    // Cambia el texto después de que la transición haya terminado
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % texts.length;
+      rotatingText.textContent = texts[currentIndex];
+      // Añade la clase 'show-text' para iniciar la transición de aparición
+      rotatingText.classList.add('show-text');
+    }, 1000); // Asegúrate de que este tiempo coincida con la duración de la transición CSS
+  }, 3000); // Cambia el texto cada 3 segundos
+});
+
 
 </script>
 
