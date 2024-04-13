@@ -1,414 +1,716 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rincon de Cuba</title>
-    <link rel="shortcut icon" href="./img/Logos/Rincon-de-Cuba-Pequeño.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-</head>
-</style>
-<body>
-    <div class="hm-wrapper">        
-        <div class="hm-header">
-            <div class="container">
-                <div class="header-menu">        
-                    <div class="hm-logo">
-                        <a href="./index.html">
-                            <img src="img/Logos/logo-home-master-store.png" alt="">
-                        </a>
-                    </div>        
-                    <nav class="hm-menu">
-                        <ul>
-                            <li>
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Menú desplegable
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <input class="form-control" type="text" id="personalCode" placeholder="Tu código">
-                                      <button class="btn btn-primary" onclick="resetCounter()">Activar</button>
-                                    </div>
-                                  </div>
-                                </li>
-                            <li><a href="./nosotros.html">Nosotros</a></li>
-                            <li><a href="./contacto.html">Contacto</a></li>
-                        </ul>
-                        <div class="hm-icon-cart">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
-                                <i class="las la-shopping-cart"></i>
-                                <span class="badge">0</span>
-                            </a>
-                        </div>        
-                        <div class="icon-menu">
-                            <button type="button"><i class="fas fa-bars"></i></button>
-                        </div>        
-                    </nav>        
-                </div>
-            </div>        
-        </div>
-        <div class="header-menu-movil">
-            <button class="cerrar-menu"><i class="fas fa-times"></i></button>
-            <ul>
-                <li><a href="./nosotros.html">Nosotros</a></li>
-                <li><a href="./contacto.html">Contacto</a></li>
-                <li>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                          Menú desplegable
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <input class="form-control" type="text" id="personalCode" placeholder="Tu código">
-                          <button class="btn btn-primary" onclick="resetCounter()">Activar</button>
-                        </div>
-                      </div>
-                    </li>           
-            </ul>
-        </div>
-         <!-- Primer modal: lista del carrito -->
-         <div class="modal fade top-right" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="cartModalLabel">Lista del carrito</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <ul class="cart-list"></ul>
-                  <p class="cart-total">Total: $0.00</p>
-                  <!-- Campo de entrada para el cupón de descuento -->
-                  <input type="text" id="discountCode" placeholder="Ingresa tu cupón de descuento">
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" id="clearCart">Limpiar carrito</button>
-                  <button type="button" class="btn btn-primary" id="checkoutCart" data-bs-toggle="modal" data-bs-target="#checkoutModal">Finalizar compra</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Segundo modal: formulario de compra -->
-          <div class="modal fade top-right" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content new-style">
-                <div class="modal-header">
-                  <h5 class="modal-title text-danger" id="checkoutModalLabel">Finalizar compra con nuevo estilo</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form class="modal-form">
-                    <div class="modal-form-group">
-                      <label for="name" class="modal-form-label">Nombre</label>
-                      <input type="text" id="name" class="modal-form-input form-control" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="phone" class="modal-form-label">Teléfono</label>
-                      <input type="tel" id="phone" class="modal-form-input form-control intl-tel-input" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="email" class="modal-form-label">Correo</label>
-                      <input type="email" id="email" class="modal-form-input form-control" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="recipient" class="modal-form-label">Nombre de a quien envía</label>
-                      <input type="text" id="recipient" class="modal-form-input form-control" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="recipient-phone" class="modal-form-label">Teléfono de a quien envía</label>
-                      <input type="tel" id="recipient-phone" class="modal-form-input form-control intl-tel-input" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="street" class="modal-form-label">Nombre de la calle</label>
-                      <input type="text" id="street" class="modal-form-input form-control" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="between" class="modal-form-label">Entre calles</label>
-                      <input type="text" id="between" class="modal-form-input form-control" required>
-                    </div>
-                    <div class="modal-form-group">
-                      <label for="number" class="modal-form-label">Número de la casa</label>
-                      <input type="number" id="number" class="modal-form-input form-control" required>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button class="btn btn-secondary" data-bs-target="#cartModal" data-bs-toggle="modal">Volver al Carrito</button>          
-                  <button class="btn btn-primary" type="submit">Enviar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Banner-->
-          <div class="hm-banner">
-            <div class="img-banner">
-                <img src="img/banner-1.jpg" alt="">
-            </div>
-            <a href=""></a>
-        </div>
-        <section class="w-75 mx-auto text-center pt-3 my-lg-4" id="Intro">
-            <h1 class="p-3 fs-2 border-top border-3">Elabora con nosotros tus Combos de alimentos para <span class="text-primary"> tus familiares en Cuba.</span></h1>
-            <p>Bienvenido a Rincón de Cuba,<span class="text-primary"> tu destino para los mejores productos y combos de comida elaborados por usted para sus familiares en Cuba. Ofrecemos una selección exclusiva de productos y combos diseñados para satisfacer tus antojos y brindarte una auténtica experiencia. Explora nuestros productos y crea tus combos de comida a tu preferencia para tus familiares en Cuba.</span></p>
-        </section>
-        <h1></h1>
-         <p class="text-center" id="visit-count">¡Bienvenido a nuestra página! Esta es tu primera visita.</p> 
-
-          <div class="modal" id="anuncio-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">¡Gracias por tu segunda visita!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Estamos muy contentos de que hayas vuelto a nuestra tienda. Queremos premiar tu fidelidad con un descuento especial del 10% en tu próxima compra. Solo tienes que introducir el código <strong>SEGUNDAVISITA</strong> al finalizar tu pedido.</p>
-                        <p>¡No dejes pasar esta oportunidad y aprovecha nuestro catálogo de productos de calidad y buen precio!</p>
-                        <img src="./img/anuncio.jpg" alt="Anuncio" class="img-fluid">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Ir a comprar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--CAtegorias-->
-        <div class="hm-page-block">
-            <div class="container">
-                <div class="header-title">
-                    <h1  data-aos="fade-up" data-aos-duration="3000">Categorías</h1>
-                </div>
-                <div class="hm-grid-category">
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1000">
-                        <a href="#">
-                            <img src="img/c-1.jpg" alt="">
-                            <div class="c-info">
-                                <h3>Todo en calzado</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="1500">
-                        <a href="#">
-                            <img src="img/c-2.jpg" alt="">
-                            <div class="c-info">
-                                <h3>Todo a la moda</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000">
-                        <a href="#">
-                            <img src="img/c-3.jpg" alt="">
-                            <div class="c-info">
-                                <h3>Lo mejor en tecnología</h3>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="grid-item" data-aos="fade-up" data-aos-duration="2000">
-                        <a href="#">
-                            <img src="img/c-4.jpg" alt="">
-                            <div class="c-info">
-                                <h3>Accesorios</h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Productos populares-->
-        <div class="hm-page-block bg-fondo">
-            <div class="container">
-                <div class="header-title" data-aos="fade-up">
-                    <h1>Productos populares</h1>
-                </div>
-                <!-- TABS -->
-                <ul class="hm-tabs" data-aos="fade-up">
-                    <li class="hm-tab-link">
-                        GRANOS
-                    </li>
-                    <li class="hm-tab-link ">
-                        LACTEOS
-                    </li>
-                    <li class="hm-tab-link ">
-                        BEBIDAS
-                    </li>
-                    <li class="hm-tab-link ative">
-                        ACEO PERSONAL
-                    </li>
-                </ul>
-                <!-- CONTENIDO DE LOS TABS -->
-                <!-- GRANOS -->
-                <div class="tabs-content" data-aos="fade-up">
-                    <div class="grid-product">
-                        <div class="product-item card">
-                            <div class="p-portada">
-                                <a href="#">
-                                    <img src="img/320/Aceite-2_Easy-Resize.com.jpg" class="card-img-top" alt="">
-                                </a>
-                                <span class="stin stin-new">Nuevo</span>
-                            </div>
-                            <div class="p-info card-title">
-                               <a href=""> <h3>Aceite</h3></a>
-                                <div class="precio">
-                                    <span class="product-price">$3.50us</span>
-                                </div>
-                                <a class="hm-btn btn-primary  uppercase add-to-cart">AGREGAR AL CARRITO</a>
-                            </div>
-                        </div>
-                        <!-- LACTEOS -->
-                <div class="tabs-content" data-aos="fade-up">
-                    <div class="grid-product">
-                        <div class="product-item card">
-                            <div class="p-portada">
-                                <a href="">
-                                    <img src="img/2.jpg" class="card-img-top" alt="">
-                                </a>
-                                <span class="stin stin-new">Nuevo</span>
-                            </div>
-                            <div class="p-info">
-                               <a href=""> <h3>Quisque vulputate aliquam</h3></a>
-                                <div class="precio">
-                                    <span>S/ 00.00</span>
-                                </div>
-                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
-                            </div>
-                        </div>
-                        <!-- BEBIDAS -->
-                <div class="tabs-content" data-aos="fade-up">
-                    <div class="grid-product">
-                       <div class="product-item card">
-                            <div class="p-portada">
-                                <a href="">
-                                    <img src="img/1.jpg" class="card-img-top" alt="">
-                                </a>
-                                <span class="stin stin-new">Nuevo</span>
-                            </div>
-                            <div class="p-info">
-                               <a href=""> <h3>Quisque vulputate aliquam</h3></a>
-                                <div class="precio">
-                                    <span>S/ 00.00</span>
-                                </div>
-                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
-                            </div>
-                        </div>
-                        <!-- Aceo personal -->
-                <div class="tabs-content" data-aos="fade-up">
-                    <div class="grid-product">
-                      <div class="product-item card">
-                            <div class="p-portada">
-                                <a href="">
-                                    <img src="img/1.jpg" class="card-img-top" alt="">
-                                </a>
-                                <span class="stin stin-oferta">Oferta</span>
-                            </div>
-                            <div class="p-info">
-                               <a href=""> <h3>Quisque vulputate aliquam</h3></a>
-                                <div class="precio">
-                                    <span>S/ 00.00</span>
-                                    <span class="thash">S/ 00.00</span>
-                                </div>
-                                <a href="#" class="hm-btn btn-primary uppercase add-to-cart">AGREGAR AL CARRITO</a>
-                            </div>
-                        </div>
-                        <footer>            
-                            <div class="container">                
-                                <div class="foo-row">
-                                    <div class="foo-col">
-                                        <h2>Suscríbete <br>a nuestro newsletter</h2>
-                                        <form >                
-                                            <div class="f-input">
-                                                <input type="text" name="Email" id="Email" placeholder="Ingrese su correo" required/>
-                                                
-                                                <button type="submit" class="hm-btn-round btn-primary control" id="submit-button"><i class="far fa-paper-plane"></i></button>
-                                            </div>
-                                        </form>                
-                                    </div>
-                                    <div class="foo-col">                                        
-                                        <ul>
-                                            <h2 class="text-white">Otras formas de contacto</h2>
-                                            <li class="text-white"><a href="./nosotros.html" class="text-white">Nosotros</a></li>
-                                            <li class="text-white"><a href="./contacto.html" class="text-white">Contacto</a></li>                                            
-                                    <h4 class="text-white">También puedes contactarnos por teléfono, correo electrónico o redes sociales.</h4>
-                                    <p class="text-white"><i class="bi bi-telephone"></i> +53 50545976</p>
-                                    <p class="text-white"><i class="bi bi-envelope"></i> <a href="mailto:decubarincon@gmail.com" class="text-white">decubarincon@gmail.com</a></p>
-                                    <p class="text-white"><i class="bi bi-facebook"></i> <a href="https://www.fb.com/l/6lp1kJRRR" class="text-white">Tienda en Facebook</a></p>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>        
-                </footer>        
-                <div class="foo-copy">
-                    <div class="container">
-                        <p>Rincon de Cuba © Todos los derechos reservados</p>
-                    </div>
-                </div>
-            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-            <!-- Bootstrap 5.3 JS -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <!-- Animaciones : AOS-->
-            <!-- Mi Script -->
-            
-            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-            <script>
-                 AOS.init({
-            duration: 1200,
-        })
-       
-                const headerMenu = document.querySelector('.hm-header');
-
-console.log(headerMenu.offsetTop);
-
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 80) {
-    headerMenu.classList.add('header-fixed');
-  } else {
-    headerMenu.classList.remove('header-fixed');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante de Lujo</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<style>
+  :root {
+    --fondo: #fff9f4;
+    --carrito-menu: #332c45;
   }
-});
-/*Tabs*/
-if (document.querySelector('.hm-tabs')) {
-const tabLinks = document.querySelectorAll('.hm-tab-link');
-const tabsContent = document.querySelectorAll('.tabs-content');
-tabLinks[0].classList.add('active');
-if (document.querySelector('.tabs-content')) {
-  tabsContent[0].classList.add('tab-active');
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--fondo);
+    transition: top 0.3s;
+    height: 70px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  body {
+    padding-top: 70px;
+    background-color: var(--fondo);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    color: var(--carrito-menu);
+    position: absolute;
+    left: 0;
+    padding-left: 15px;
+  }
+  .navbar-toggler:focus,
+  .navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
+  }
+  .shopping-cart {
+    color: var(--fondo);
+    position: absolute;
+    right: 50px; /* Ajuste para el icono del carrito a la izquierda del menú hamburguesa */
+    background-color: var(--carrito-menu); /* Fondo inicial del icono del carrito */
+  border-radius: 50%; /* Hace el fondo del icono redondo */
+  width: 40px; /* Ancho del fondo del icono */
+  height: 40px; /* Altura del fondo del icono */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease; /* Transición suave para el hover */
 }
-for (let i = 0; i < tabLinks.length; i++) {
-  tabLinks[i].addEventListener('click', () => {
-    tabLinks.forEach((tab) => tab.classList.remove('active'));
-    tabLinks[i].classList.add('active');
-    tabsContent.forEach((tabCont) => tabCont.classList.remove('tab-active'));
-    tabsContent[i].classList.add('tab-active');
+
+.shopping-cart i {
+  transition: transform 0.3s ease; /* Transición suave para la rotación del icono */
+}
+
+.shopping-cart:hover {
+  background-color: #e21a2b; /* Color de fondo al hacer hover */
+  transform: rotate(15deg); /* Rotación ligera al hacer hover */
+}
+
+.shopping-cart:hover i {
+  color: #fff; /* Color del icono al hacer hover */
+}
+  .full-screen-nav {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    background-color: var(--carrito-menu);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s;
+  }
+  .full-screen-nav.show {
+    left: 0;
+  }
+  .full-screen-nav ul {
+    list-style: none;
+    text-align: center;
+  }
+  .full-screen-nav ul li {
+    padding: 10px;
+  }
+  .full-screen-nav ul li a {
+    
+    text-decoration: none;
+    color: var(--fondo);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+  }
+  .full-screen-nav ul li a:hover {
+    color: #e63946;
+  }
+  .close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--fondo);
+  background-color:#868282; /* Fondo blanco para empezar */
+  border-radius: 50%; /* Hace el fondo completamente redondo */
+  width: 40px; /* Tamaño del fondo */
+  height: 40px; /* Tamaño del fondo */
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  transition: background-color 0.3s, transform 0.3s, color 0.3s;
+}
+
+.close-menu:hover {
+  color: #ffd700; /* Cambia el color del ícono a dorado */
+  background-color: #000000; /* Fondo negro para el hover */
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5); /* Sombra más oscura para el hover */
+}
+
+
+
+  
+  
+  .container {
+  max-width: 1200px; /* Ajusta el ancho máximo del contenedor */
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  display: flex; /* Añadido para usar Flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  flex-direction: column; /* Organiza los elementos en columna */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.product-image {
+  width: 100%; /* Ancho fijo para todas las imágenes */
+  height: 150px; /* Altura fija para todas las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra el espacio asignado sin deformarse */
+  display: block;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.product-price {
+  font-size: 1.8rem;
+  color: #e63946;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.btn-add-to-cart {
+  background-color: #332c45;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #564f6f;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 740px) {
+  .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .product-card {
+    margin: 0 auto 30px auto; /* Centra los productos en pantallas pequeñas */
+  }
+}
+/* Estilos para los productos en el carrito dentro del primer modal */
+.cart-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+  
+  .cart-item-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  .cart-item-quantity {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .cart-item-name {
+    flex: 1;
+    margin-right: 5px;
+  }
+  
+  .cart-item-price {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .cart-item-remove {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .cart-item-remove:hover {
+    background-color: #c82333;
+  }
+  .product-price {
+    font-size: 18px; /* Tamaño de fuente personalizado */
+    color: #007bff; /* Color de texto personalizado */
+    /* Otros estilos que desees aplicar al precio del producto */
+  }
+
+  
+ /* Estilos para el carrito de compras */
+.cart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
+  
+  .cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .cart-item-decrease,
+  .cart-item-increase {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .cart-total {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+/* Estilo para el botón de eliminar producto en el carrito */
+.cart-item-remove {
+    background-color: #ff5a5f; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 5px; /* Margen a la izquierda */
+  }
+  
+  .cart-item-remove:hover {
+    background-color: #d64246; /* Color de fondo al pasar el cursor */
+  }
+
+  
+
+ 
+  /* Oculta el párrafo con el ID "discount" */
+  #discount {
+      display: none;
+  }
+  
+  /* Oculta el campo de entrada con el ID "discountCode" */
+  #discountCode {
+      display: none;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container-fluid">
+     <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="shopping-cart ms-3 hm-icon-cart cartIconContainer">
+      <i class="fas fa-shopping-cart" id="cartIcon"></i>
+      <span class="badge"></span></i>
+    </div>
+  </div>
+</nav>
+
+<div class="full-screen-nav" id="fullScreenNav">
+  <ul>
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Menú</a></li>
+    <li><a href="#">Reservas</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <span class="close-menu" onclick="toggleMenu()">×</span>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <!-- Producto 1 -->
+    <div class="col-6 col-md-6 mb-4">
+      <div class="product-card">
+        <img src="https://i.postimg.cc/G204BNxg/Arroz-Grano-Largo-El-Pozo-02-87e8bc6c-a40c-4465-a91b-bfdd246f9e1a-1024x1024-2x.webp" alt="Producto 1" class="product-image">
+        <h5 class="product-name">Arroz</h5>
+        <p class="product-price">$200.00</p>
+        <button class="btn-add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+    <!-- Producto 2 -->
+    <div class="col-6 col-md-6 mb-4">
+      <div class="product-card">
+        <img src="https://i.postimg.cc/ZRHWtppk/Aceite-de-1-L.jpg" alt="Producto 2" class="product-image">
+        <h5 class="product-name">Aceite</h5>
+        <p class="product-price">$1200.00</p>
+        <button class="btn-add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="col-6 col-md-6 mb-4">
+      <div class="product-card">
+        <img src="https://i.postimg.cc/Vv2X5Hvm/603ebddacf623246118940.jpg" alt="Producto 1" class="product-image">
+        <h5 class="product-name">Frijoles</h5>
+        <p class="product-price">$300.00</p>
+        <button class="btn-add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="col-6 col-md-6 mb-4">
+      <div class="product-card">
+        <img src="https://i.postimg.cc/VLDQ8zXF/Galletas-de-sal.jpg" alt="Producto 1" class="product-image">
+        <h5 class="product-name">Leche</h5>
+        <p class="product-price">$450.00</p>
+        <button class="btn-add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="col-6 col-md-6 mb-4">
+      <div class="product-card">
+        <img src="https://i.postimg.cc/q70xnCHh/IMG-20240408-WA0001.jpg" alt="Producto 1" class="product-image">
+        <h5 class="product-name">Galletas</h5>
+        <p class="product-price">$130.00</p>
+        <button class="btn-add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+    <div class="col-6 col-md-6 mb-4">
+      <div class="product-card">
+        <img src="https://i.postimg.cc/q70xnCHh/IMG-20240408-WA0001.jpg" alt="Producto 1" class="product-image">
+        <h5 class="product-name">Queso</h5>
+        <p class="product-price">$500.00</p>
+        <button class="btn-add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+  <!-- Añade más filas de productos según sea necesario -->
+</div>
+
+<!-- =================================
+           MODAL DE CARRITO DE COMPRAS
+        ================================== -->
+        <!-- Primer modal: lista del carrito -->
+        <div class="modal fade top-right" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="cartModalLabel">Lista del carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul class="cart-list"></ul>
+                <p class="cart-total">Total: $0.00</p>
+                <p id="discount">Descuento: $0.00</p>
+                <!-- Campo de entrada para el cupón de descuento -->
+                <input type="text" id="discountCode" placeholder="Ingresa tu cupón de descuento">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="clearCart">Limpiar carrito</button>
+                <button type="button" class="btn btn-primary" id="checkoutCart" data-bs-toggle="modal" data-bs-target="#checkoutModal">Finalizar compra</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+
+<!-- Segundo modal: formulario de compra -->
+<!-- Segundo modal: formulario de compra con estilo diferente -->
+<div class="modal fade top-right" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-xl">
+  <div class="modal-content new-style">
+    <div class="modal-header">
+      <h5 class="modal-title text-danger" id="checkoutModalLabel">Finalizar compra</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form class="modal-form">
+        <div class="modal-form-group">
+          <label for="name" class="modal-form-label">Nombre</label>
+          <input type="text" id="name" class="modal-form-input form-control" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="phone" class="modal-form-label">Teléfono</label>
+          <input type="tel" id="phone" class="modal-form-input form-control intl-tel-input" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="email" class="modal-form-label">Correo</label>
+          <input type="email" id="email" class="modal-form-input form-control" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="recipient" class="modal-form-label">Nombre de a quien envía</label>
+          <input type="text" id="recipient" class="modal-form-input form-control" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="recipient-phone" class="modal-form-label">Teléfono de a quien envía</label>
+          <input type="tel" id="recipient-phone" class="modal-form-input form-control intl-tel-input" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="street" class="modal-form-label">Nombre de la calle</label>
+          <input type="text" id="street" class="modal-form-input form-control" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="between" class="modal-form-label">Entre calles</label>
+          <input type="text" id="between" class="modal-form-input form-control" required>
+        </div>
+        <div class="modal-form-group">
+          <label for="number" class="modal-form-label">Número de la casa</label>
+          <input type="number" id="number" class="modal-form-input form-control" required>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-bs-target="#cartModal" data-bs-toggle="modal">Volver al Carrito</button>
+
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.11/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script>
+
+  
+   let lastScrollTop = 0;
+  window.addEventListener('scroll', function() {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > lastScrollTop) {
+      document.getElementById('navbar').style.top = '-70px';
+    } else {
+      document.getElementById('navbar').style.top = '0';
+    }
+    lastScrollTop = currentScroll;
   });
-}
-}
-/*Menu*/
-const menu = document.querySelector('.icon-menu');
-const menuClose = document.querySelector('.cerrar-menu');
 
-menu.addEventListener('click', () => {
-  document.querySelector('.header-menu-movil').classList.add('active');
+  function toggleMenu() {
+    document.getElementById('fullScreenNav').classList.toggle('show');
+  }
+document.addEventListener('DOMContentLoaded', function () {
+  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || {};
+
+  const addToCartButtons = document.querySelectorAll('.btn-add-to-cart');
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const productCard = this.closest('.product-card');
+      const productName = productCard.querySelector('.product-name').textContent;
+      const productImage = productCard.querySelector('.product-image').src;
+      const productPriceText = productCard.querySelector('.product-price').textContent.trim();
+      const productPrice = extractPrice(productPriceText);
+      addToCart(productName, productImage, productPrice);
+    });
+  });
+
+  function extractPrice(priceText) {
+    const currencySymbols = ['$', '€'];
+    const priceArray = priceText.split(' ');
+    let price = 0;
+    for (const item of priceArray) {
+      if (!isNaN(parseFloat(item))) {
+        price = parseFloat(item);
+        break;
+      } else {
+        for (const symbol of currencySymbols) {
+          if (item.includes(symbol)) {
+            const number = item.replace(symbol, '');
+            price = parseFloat(number);
+            break;
+          }
+        }
+      }
+    }
+    return price;
+  }
+
+  function addToCart(productName, productImage, productPrice) {
+    if (cartItems[productName]) {
+      cartItems[productName].quantity++;
+      cartItems[productName].totalPrice = cartItems[productName].quantity * productPrice;
+    } else {
+      cartItems[productName] = {
+        image: productImage,
+        quantity: 1,
+        price: productPrice,
+        totalPrice: productPrice
+      };
+    }
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartList = document.querySelector('.cart-list');
+    const cartTotal = document.querySelector('.cart-total');
+    cartList.innerHTML = '';
+    let grandTotal = 0;
+    for (const productName in cartItems) {
+      const { image, quantity, price, totalPrice } = cartItems[productName];
+      const li = document.createElement('li');
+      li.classList.add('cart-item');
+      li.innerHTML = `
+        <img src="${image}" alt="${productName}" class="cart-item-image">
+        <span class="cart-item-name">${productName}</span>
+        <span class="cart-item-quantity">
+          <button class="cart-item-decrease">-</button>
+          ${quantity}
+          <button class="cart-item-increase">+</button>
+        </span>
+        <span class="cart-item-total-price">$ ${totalPrice.toFixed(2)}</span>
+        <button class="cart-item-remove">X</button>
+      `;
+      cartList.appendChild(li);
+      grandTotal += totalPrice;
+    }
+    cartTotal.textContent = `Total: $ ${grandTotal.toFixed(2)}`;
+    const cartCounter = document.querySelector('.hm-icon-cart .badge');
+    const totalCount = Object.values(cartItems).reduce((acc, item) => acc + item.quantity, 0);
+    cartCounter.textContent = totalCount;
+  }
+
+  const cartList = document.querySelector(".cart-list");
+  cartList.addEventListener("click", function (event) {
+    if (event.target.classList.contains("cart-item-remove")) {
+      const productCard = event.target.closest(".cart-item");
+      const productName = productCard.querySelector(".cart-item-name").textContent;
+      removeProduct(productName);
+    } else if (event.target.classList.contains("cart-item-increase")) {
+      const productCard = event.target.closest(".cart-item");
+      const productName = productCard.querySelector(".cart-item-name").textContent;
+      increaseQuantity(productName);
+    } else if (event.target.classList.contains("cart-item-decrease")) {
+      const productCard = event.target.closest(".cart-item");
+      const productName = productCard.querySelector(".cart-item-name").textContent;
+      decreaseQuantity(productName);
+    }
+  });
+
+  function removeProduct(productName) {
+    delete cartItems[productName];
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCart();
+  }
+
+  function increaseQuantity(productName) {
+    if (cartItems[productName]) {
+      cartItems[productName].quantity++;
+      cartItems[productName].totalPrice = cartItems[productName].quantity * cartItems[productName].price;
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCart();
+    }
+  }
+
+  function decreaseQuantity(productName) {
+    if (cartItems[productName] && cartItems[productName].quantity > 1) {
+      cartItems[productName].quantity--;
+      cartItems[productName].totalPrice = cartItems[productName].quantity * cartItems[productName].price;
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateCart();
+    } else if (cartItems[productName] && cartItems[productName].quantity === 1) {
+      removeProduct(productName);
+    }
+  }
+
+  // Asegúrate de que el ID del ícono del carrito en tu HTML sea "cartIcon" para que coincida con el script
+  var cartIcon = document.getElementById("cartIcon");
+  cartIcon.addEventListener("click", function () {
+    var modalElement = document.getElementById('cartModal');
+    var modalInstance = bootstrap.Modal.getInstance(modalElement);
+    
+    if (modalInstance) {
+      modalInstance.show();
+    } else {
+      new bootstrap.Modal(modalElement).show();
+    }
+  });
+
+  // Restaurar el carrito al cargar la página
+  updateCart();
 });
 
-menuClose.addEventListener('click', () => {
-  document.querySelector('.header-menu-movil').classList.remove('active');
+const sendToWhatsApp = () => {
+  const cartItems = document.querySelectorAll('.cart-item');
+  let cartProducts = '';
+  cartItems.forEach(item => {
+    const quantity = item.querySelector('.cart-item-quantity').textContent.trim().split('\n')[1].trim();
+    const name = item.querySelector('.cart-item-name').textContent.trim();
+    cartProducts += `* ${quantity} x ${name}\n`; // Añade un asterisco y un salto de línea para cada producto
+  });
+  
+  const cartTotal = document.querySelector('.cart-total').textContent.trim().split(':')[1].trim();
+  const discountCode = document.querySelector('#discountCode').value.trim();
+  const name = document.querySelector('#name').value.trim();
+  const recipient = document.querySelector('#recipient').value.trim();
+  const recipientPhone = document.querySelector('#recipient-phone').value.trim();
+  const street = document.querySelector('#street').value.trim();
+  const between = document.querySelector('#between').value.trim();
+  const number = document.querySelector('#number').value.trim();
+  
+  let message = `Hola desde la Cafetería Doña Lucía,\n`;
+  message += `Mi nombre es ${name} y he realizado un pedido de:\n\n`;
+  message += `${cartProducts}\n`; // Asegúrate de que haya un salto de línea al final de la lista de productos
+  message += `Con un total de: ${cartTotal}.\n`;
+  message += `Mi dirección es: Calle ${street}, entre ${between}, #${number}.\n`;
+  message += `Espero su respuesta... saludos.\n`;
+  
+  const whatsappLink = `https://api.whatsapp.com/send?phone=5363658636&text=${encodeURIComponent(message)}`;
+  window.open(whatsappLink, '_blank');
+};
+
+
+  const sendButton = document.querySelector('.btn-primary[type="submit"]');
+  sendButton.addEventListener('click', sendToWhatsApp);
+
+  document.addEventListener('DOMContentLoaded', function () {
+  var cartIconContainer = document.querySelector(".cartIconContainer");
+  cartIconContainer.addEventListener("click", function () {
+    var modalElement = document.getElementById('cartModal');
+    var modalInstance = bootstrap.Modal.getInstance(modalElement);
+    
+    if (modalInstance) {
+      modalInstance.show();
+    } else {
+      new bootstrap.Modal(modalElement).show();
+    }
+  });
 });
 
-// Seleccionar el elemento que tiene el icono de la carrito de compras
-var icono = document.querySelector(".hm-icon-cart a");
+</script>
 
-// Añadir un evento de clic al elemento
-icono.addEventListener("click", function (e) {
-  // Prevenir el comportamiento por defecto del enlace
-  e.preventDefault();
-  // Seleccionar el elemento que tiene el modal de bootstrap
-  var modal = document.getElementById("cartModal");
-  // Mostrar el modal usando el método de bootstrap
-  modal.modal("show");
-});
-            </script>
+</body>
+</html>
+
