@@ -913,7 +913,7 @@ const sendToWhatsApp = () => {
   cartItems.forEach(item => {
     const quantity = item.querySelector('.cart-item-quantity').textContent.trim().split('\n')[1].trim();
     const name = item.querySelector('.cart-item-name').textContent.trim();
-    cartProducts += `* ${quantity} x ${name}\n`; // Añade un asterisco y un salto de línea para cada producto
+    cartProducts += `* ${quantity} - ${name}\n`; // Añade un asterisco y un salto de línea para cada producto
   });
   
   const cartTotal = document.querySelector('.cart-total').textContent.trim().split(':')[1].trim();
