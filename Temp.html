@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restaurante de Lujo</title>
+<title>Doña Lucía</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<!-- Animaciones AOS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+<meta property="og:title" content="Rincón de Cuba | Los Mejores Precios">
+<meta property="og:description" content="Arroz, Frijoles, Carnes, Lácteos y mucho mas...">
+
+<meta property="og:image" content="https://i.postimg.cc/brT2kV2z/Combos-Rincon-de-cuba.jpg">
+<meta property="og:url" content="https://decubarincon.github.io/tiendaonline">
 <style>
   :root {
     --fondo: #fff9f4;
@@ -370,6 +377,58 @@
   opacity: 1;
 }
 
+/* CSS: Estilos base para la notificación */
+.notification {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transform: scale(0.5); /* Comienza más pequeña */
+    visibility: hidden; /* Inicia invisible */
+    transition: visibility 0s linear 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+/* Clase para mostrar la notificación */
+.notification.show {
+    opacity: 1;
+    transform: scale(1); /* Escala a su tamaño normal */
+    visibility: visible; /* Hace la notificación visible */
+    transition-delay: 0s; /* Restablece el retraso de la visibilidad */
+}
+
+/* Clase para ocultar la notificación */
+.notification.hide {
+    opacity: 0;
+    transform: scale(0.3); /* Reduce su tamaño */
+    visibility: hidden; /* Hace la notificación invisible */
+    transition: opacity 0.3s, transform 0.5s, visibility 0s linear 0.3s;
+}
+
+/* Animación para la aparición suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Aplicar la animación al mostrar la notificación */
+.notification.show {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -398,56 +457,61 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row">
+  <div  class="row">
     <!-- Producto 1 -->
-    <div class="col-6 col-md-6 mb-4">
-      <div class="product-card">
+    <div data-aos="fade-up" class="col-6 col-md-6 mb-4" >
+      <div  class="product-card">
         <img src="https://i.postimg.cc/G204BNxg/Arroz-Grano-Largo-El-Pozo-02-87e8bc6c-a40c-4465-a91b-bfdd246f9e1a-1024x1024-2x.webp" alt="Producto 1" class="product-image">
-        <h5 class="product-name">Arroz</h5>
-        <p class="product-price">$200.00</p>
-        <button class="btn-add-to-cart">Agregar al Carrito</button>
+        <h5  class="product-name">Arroz</h5>
+        <p data-aos="fade-up" class="product-price">$200.00</p>
+        <button class="btn-add-to-cart" onclick="showNotification()">Agregar al Carrito</button>
       </div>
+      <div id="notification" class="notification"></div>
     </div>
     <!-- Producto 2 -->
-    <div class="col-6 col-md-6 mb-4">
+    <div data-aos="fade-up" class="col-6 col-md-6 mb-4">
       <div class="product-card">
         <img src="https://i.postimg.cc/ZRHWtppk/Aceite-de-1-L.jpg" alt="Producto 2" class="product-image">
         <h5 class="product-name">Aceite</h5>
-        <p class="product-price">$1200.00</p>
-        <button class="btn-add-to-cart">Agregar al Carrito</button>
+        <p data-aos="fade-up" class="product-price">$1200.00</p>
+        <button class="btn-add-to-cart" onclick="showNotification()">Agregar al Carrito</button>
       </div>
+      <div id="notification" class="notification"></div>
     </div>
-    <div class="col-6 col-md-6 mb-4">
+    <div data-aos="fade-up" class="col-6 col-md-6 mb-4">
       <div class="product-card">
         <img src="https://i.postimg.cc/Vv2X5Hvm/603ebddacf623246118940.jpg" alt="Producto 1" class="product-image">
         <h5 class="product-name">Frijoles</h5>
-        <p class="product-price">$300.00</p>
-        <button class="btn-add-to-cart">Agregar al Carrito</button>
+        <p data-aos="fade-up" class="product-price">$300.00</p>
+        <button class="btn-add-to-cart" onclick="showNotification()">Agregar al Carrito</button>
       </div>
+      <div id="notification" class="notification"></div>
     </div>
-    <div class="col-6 col-md-6 mb-4">
+    <div data-aos="fade-up" class="col-6 col-md-6 mb-4">
       <div class="product-card">
         <img src="https://i.postimg.cc/VLDQ8zXF/Galletas-de-sal.jpg" alt="Producto 1" class="product-image">
         <h5 class="product-name">Leche</h5>
-        <p class="product-price">$450.00</p>
-        <button class="btn-add-to-cart">Agregar al Carrito</button>
+        <p data-aos="fade-up" class="product-price">$450.00</p>
+        <button class="btn-add-to-cart" onclick="showNotification()">Agregar al Carrito</button>
       </div>
+      <div id="notification" class="notification"></div>
     </div>
-    <div class="col-6 col-md-6 mb-4">
+    <div data-aos="fade-up" class="col-6 col-md-6 mb-4">
       <div class="product-card">
         <img src="https://i.postimg.cc/q70xnCHh/IMG-20240408-WA0001.jpg" alt="Producto 1" class="product-image">
         <h5 class="product-name">Galletas</h5>
-        <p class="product-price">$130.00</p>
+        <p data-aos="fade-up" class="product-price">$130.00</p>
         <button class="btn-add-to-cart">Agregar al Carrito</button>
       </div>
     </div>
-    <div class="col-6 col-md-6 mb-4">
+    <div data-aos="fade-up" class="col-6 col-md-6 mb-4">
       <div class="product-card">
         <img src="https://i.postimg.cc/q70xnCHh/IMG-20240408-WA0001.jpg" alt="Producto 1" class="product-image">
         <h5 class="product-name">Queso</h5>
-        <p class="product-price">$500.00</p>
-        <button class="btn-add-to-cart">Agregar al Carrito</button>
+        <p data-aos="fade-up" class="product-price">$500.00</p>
+        <button class="btn-add-to-cart" onclick="showNotification()">Agregar al Carrito</button>
       </div>
+      <div id="notification" class="notification"></div>
     </div>
   </div>
   <!-- Añade más filas de productos según sea necesario -->
@@ -472,7 +536,7 @@
                 <input type="text" id="discountCode" placeholder="Ingresa tu cupón de descuento">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="clearCart">Limpiar carrito</button>
+             
                 <button type="button" class="btn btn-primary" id="checkoutCart" data-bs-toggle="modal" data-bs-target="#checkoutModal">Finalizar compra</button>
               </div>
             </div>
@@ -535,12 +599,37 @@
 </div>
 </div>
 
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.11/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 <script>
+
+
+
+
+function showNotification() {
+    var notification = document.getElementById('notification');
+    notification.textContent = 'Producto agregado al carrito';
+    notification.classList.add('show');
+
+    // Verifica si la API de vibración es soportada
+    if (navigator.vibrate) {
+        // Hace que el teléfono vibre por 50 milisegundos
+        navigator.vibrate(50);
+    }
+
+    setTimeout(function() {
+        notification.classList.add('hide');
+
+        setTimeout(function() {
+            notification.classList.remove('show', 'hide');
+        }, 500);
+    }, 2000);
+}
+
 
   
    let lastScrollTop = 0;
@@ -766,6 +855,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }, 3000); // Cambia el texto cada 3 segundos
 });
 
+AOS.init({
+  duration: 1200,
+})
 
 </script>
 
