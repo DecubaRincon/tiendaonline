@@ -269,64 +269,110 @@
 
   
  /* Estilos para el carrito de compras */
-.cart-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-  }
-  
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-  }
-  
-  .cart-item-quantity {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .cart-item-decrease,
-  .cart-item-increase {
-    margin: 0 5px;
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .cart-total {
-    text-align: center;
-    font-size: 24px;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+/* Estilo general para el modal del carrito */
+#cartModal .modal-dialog {
+  max-width: 90%; /* Ajusta el ancho máximo para dispositivos móviles */
+}
 
-/* Estilo para el botón de eliminar producto en el carrito */
-.cart-item-remove {
-    background-color: #ff5a5f; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    border: none;
-    padding: 5px 10px;
-    font-size: 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin-left: 5px; /* Margen a la izquierda */
+#cartModal .modal-content {
+  overflow: hidden; /* Evita que el contenido se desborde */
+  border-radius: 8px; /* Bordes redondeados para un aspecto moderno */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidad */
+}
+
+#cartModal .modal-header {
+  background-color: #007bff; /* Color de fondo para la cabecera */
+  color: white; /* Texto blanco para contraste */
+  padding: 10px 20px; /* Espaciado interno */
+}
+
+#cartModal .modal-title {
+  font-weight: 600; /* Título en negrita */
+}
+
+#cartModal .modal-body {
+  padding: 20px; /* Espaciado interno */
+  max-height: 60vh; /* Altura máxima para evitar que el teclado lo tape */
+  overflow-y: auto; /* Permite desplazamiento si el contenido es muy largo */
+}
+
+#cartModal .cart-list {
+  list-style: none; /* Remueve estilos de lista por defecto */
+  padding: 0; /* Remueve el padding por defecto */
+}
+
+#cartModal .cart-item {
+  display: flex; /* Distribución en fila de los elementos del carrito */
+  align-items: center; /* Alineación vertical */
+  justify-content: space-between; /* Espaciado entre elementos */
+  margin-bottom: 15px; /* Espacio entre ítems del carrito */
+  border-bottom: 1px solid #eaeaea; /* Línea divisoria sutil */
+  padding-bottom: 10px; /* Espaciado al final de cada ítem */
+}
+
+#cartModal .cart-item-image {
+  width: 50px; /* Tamaño fijo para la imagen */
+  height: 50px; /* Tamaño fijo para la imagen */
+  object-fit: cover; /* Asegura que la imagen cubra el espacio asignado */
+  border-radius: 4px; /* Bordes redondeados para la imagen */
+  margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+#cartModal .cart-item-name {
+  flex-grow: 1; /* Permite que el nombre ocupe el espacio disponible */
+  margin-right: 10px; /* Espacio a la derecha del nombre */
+}
+
+#cartModal .cart-item-quantity {
+  display: flex; /* Distribución en fila de los botones de cantidad */
+  align-items: center; /* Alineación vertical */
+}
+
+#cartModal .cart-item-decrease,
+#cartModal .cart-item-increase {
+  background-color: #007bff; /* Color de fondo para los botones */
+  color: white; /* Texto blanco para contraste */
+  border: none; /* Remueve el borde por defecto */
+  padding: 5px 8px; /* Espaciado interno */
+  margin: 0 5px; /* Espacio entre botones */
+  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
+}
+
+#cartModal .cart-item-remove {
+  background-color: #dc3545; /* Color de fondo para el botón de eliminar */
+  color: white; /* Texto blanco para contraste */
+  border: none; /* Remueve el borde por defecto */
+  padding: 5px 8px; /* Espaciado interno */
+  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
+}
+
+#cartModal .cart-total,
+#cartModal #discount {
+  font-weight: 600; /* Texto en negrita para el total y descuento */
+  margin-top: 15px; /* Espacio antes del total y descuento */
+}
+
+#cartModal .modal-footer {
+  padding: 10px 20px; /* Espaciado interno */
+  background-color: #f8f9fa; /* Color de fondo suave */
+}
+
+#cartModal #checkoutCart {
+  background-color: #28a745; /* Color de fondo para el botón de finalizar compra */
+  color: white; /* Texto blanco para contraste */
+  border: none; /* Remueve el borde por defecto */
+  padding: 10px 20px; /* Espaciado interno */
+  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
+}
+
+/* Ajustes para dispositivos más grandes */
+@media (min-width: 768px) {
+  #cartModal .modal-dialog {
+    max-width: 50%; /* Ajusta el ancho máximo para tabletas y escritorio */
   }
-  
-  .cart-item-remove:hover {
-    background-color: #d64246; /* Color de fondo al pasar el cursor */
-  }
+}
+
+
 
   
 
@@ -426,8 +472,77 @@
 .notification.show {
     animation: fadeIn 0.5s ease-out forwards;
 }
+/* Ocultar campos inesesarios para el segundo modal del carrito */
+#email,
+#recipient,
+#recipient-phone {
+  display: none;
+}
+.hide-form-group {
+  display: none;
+}
 
+/* Estilo base para el modal en dispositivos móviles */
+#checkoutModal .modal-dialog {
+  margin: 0.5rem;
+  max-width: 100%;
+}
 
+#checkoutModal .modal-content {
+  margin-bottom: 10vh; /* Espacio adicional para evitar que el teclado tape el modal */
+  border-radius: 0.3rem;
+}
+
+/* Estilo para la cabecera del modal */
+#checkoutModal .modal-header {
+  padding: 0.8rem 1rem;
+}
+
+#checkoutModal .modal-title {
+  font-size: 1.1rem;
+}
+
+#checkoutModal .btn-close {
+  padding: 0.5rem;
+  margin: -0.5rem -0.5rem -0.5rem auto;
+}
+
+/* Estilo para el cuerpo del modal */
+#checkoutModal .modal-body {
+  padding: 0.8rem 1rem;
+}
+
+#checkoutModal .modal-form-group {
+  margin-bottom: 0.5rem;
+}
+
+#checkoutModal .modal-form-label {
+  font-size: 0.9rem;
+}
+
+#checkoutModal .modal-form-input {
+  font-size: 0.9rem;
+  padding: 0.5rem 0.7rem;
+}
+
+/* Estilo para el pie de página del modal */
+#checkoutModal .modal-footer {
+  padding: 0.8rem 1rem;
+  flex-wrap: wrap; /* Asegura que los botones no se desborden */
+}
+
+#checkoutModal .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  /* Estilos para tabletas y dispositivos más grandes */
+  #checkoutModal .modal-dialog {
+    max-width: 50%;
+    margin: 1.75rem auto;
+  }
+}
 
 </style>
 </head>
@@ -565,16 +680,20 @@
           <input type="tel" id="phone" class="modal-form-input form-control intl-tel-input" required>
         </div>
         <div class="modal-form-group">
-          <label for="email" class="modal-form-label">Correo</label>
+          <label for="email" class="modal-form-label hide-form-group">Correo</label>
           <input type="email" id="email" class="modal-form-input form-control" required>
         </div>
         <div class="modal-form-group">
-          <label for="recipient" class="modal-form-label">Nombre de a quien envía</label>
+          <label for="recipient" class="modal-form-label hide-form-group">Nombre de a quien envía</label>
           <input type="text" id="recipient" class="modal-form-input form-control" required>
         </div>
-        <div class="modal-form-group">
+        <div class="modal-form-group hide-form-group">
           <label for="recipient-phone" class="modal-form-label">Teléfono de a quien envía</label>
           <input type="tel" id="recipient-phone" class="modal-form-input form-control intl-tel-input" required>
+        </div>
+        <div class="div">
+          <h3>Direccion a Enviar</h3>
+          
         </div>
         <div class="modal-form-group">
           <label for="street" class="modal-form-label">Nombre de la calle</label>
@@ -805,6 +924,8 @@ const sendToWhatsApp = () => {
   const street = document.querySelector('#street').value.trim();
   const between = document.querySelector('#between').value.trim();
   const number = document.querySelector('#number').value.trim();
+
+  
   
   let message = `Hola desde la Cafetería Doña Lucía,\n`;
   message += `Mi nombre es ${name} y he realizado un pedido de:\n\n`;
@@ -838,7 +959,7 @@ const sendToWhatsApp = () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   const rotatingText = document.getElementById('rotatingText');
-  const texts = ['Confituras', 'Pizzas', 'Arroz'];
+  const texts = ['Al +53055189657', 'Llámanos ya!!', 'Será un placer...', 'atenderle!!'];
   let currentIndex = 0;
 
   setInterval(() => {
