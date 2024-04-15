@@ -6,6 +6,7 @@
 <title>Doña Lucía</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="icon" type="image/png" href="https://i.postimg.cc/VkBZVg7d/Favicon-Rincon-de-Cuba-Fondo-Blanco.png"/>
 <!-- Animaciones AOS -->
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
 <meta property="og:title" content="Rincón de Cuba | Los Mejores Precios">
@@ -214,163 +215,94 @@
 }
 /* Estilos para los productos en el carrito dentro del primer modal */
 .cart-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .cart-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-  }
-  
-  .cart-item-image {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    border-radius: 5px;
-  }
-  
-  .cart-item-quantity {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
-  .cart-item-name {
-    flex: 1;
-    margin-right: 5px;
-  }
-  
-  .cart-item-price {
-    font-weight: bold;
-    margin-right: 5px;
-  }
-  
-  .cart-item-remove {
-    background-color: #000000;
-    color: #fff;
-    border: none;
-    padding: 3px 8px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 12px;
-  }
-  
-  .cart-item-remove:hover {
-    background-color: #c82333;
-  }
-  .product-price {
-    font-size: 18px; /* Tamaño de fuente personalizado */
-    color: #007bff; /* Color de texto personalizado */
-    /* Otros estilos que desees aplicar al precio del producto */
-  }
+  list-style: none;
+  padding: 0;
+  background-color: #f9f9f9; /* Fondo sutil para la lista */
+  border-top: 2px solid #ececec; /* Borde superior sutil */
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* Espacio adicional entre elementos */
+  border-bottom: 2px dashed #e1e1e1; /* Borde inferior punteado */
+  padding-bottom: 10px; /* Espaciado inferior adicional */
+}
+
+.cart-item-image {
+  width: 60px; /* Tamaño ligeramente más grande */
+  height: 60px; /* Tamaño ligeramente más grande */
+  margin-right: 15px; /* Espaciado adicional */
+  border-radius: 50%; /* Imágenes redondas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para las imágenes */
+}
+
+.cart-item-quantity {
+  font-weight: bold;
+  margin-right: 10px; /* Espaciado adicional */
+}
+
+.cart-item-name {
+  flex: 1;
+  margin-right: 10px; /* Espaciado adicional */
+  font-size: 16px; /* Tamaño de fuente más grande */
+}
+
+.cart-item-price {
+  font-weight: bold;
+  margin-right: 10px; /* Espaciado adicional */
+}
+
+.cart-item-remove {
+  margin: 0 10px; /* Espaciado adicional */
+  padding: 8px 12px; /* Espaciado interno adicional */
+  font-size: 16px; /* Tamaño de fuente consistente */
+  cursor: pointer;
+  border: none; /* Sin bordes */
+  border-radius: 50%; /* Botón redondo */
+  background-color: #ff6b6b; /* Color de fondo más vibrante */
+  color: white; /* Texto blanco para contraste */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para botón */
+}
+
+.cart-item-remove:hover {
+  background-color: #ff4757; /* Color de fondo al pasar el ratón */
+}
+
+.cart-total {
+  text-align: center;
+  font-size: 22px; /* Tamaño de fuente más grande */
+  margin-top: 25px; /* Espaciado superior adicional */
+  padding: 15px; /* Espaciado interno adicional */
+  color: #333; /* Color de texto oscuro para un aspecto más discreto */
+  background-color: #fff; /* Fondo blanco */
+  border: 2px solid #ddd; /* Borde más definido */
+  border-radius: 10px; /* Bordes más redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para profundidad */
+}
+
+.product-price {
+  font-size: 18px; /* Tamaño de fuente personalizado */
+  color: #007bff; /* Color de texto personalizado */
+  font-weight: bold; /* Fuente en negrita */
+}
+
+.cart-item-decrease,
+.cart-item-increase {
+  margin: 0 10px; /* Espaciado adicional */
+  padding: 8px 12px; /* Espaciado interno adicional */
+  font-size: 16px; /* Tamaño de fuente consistente */
+  cursor: pointer;
+  border: 2px solid #333; /* Borde más definido */
+  border-radius: 50%; /* Botones redondos */
+  background-color: #fff; /* Fondo blanco */
+  color: #333; /* Color de texto oscuro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para botones */
+}
 
   
  /* Estilos para el carrito de compras */
-/* Estilo general para el modal del carrito */
-#cartModal .modal-dialog {
-  max-width: 90%; /* Ajusta el ancho máximo para dispositivos móviles */
-}
 
-#cartModal .modal-content {
-  overflow: hidden; /* Evita que el contenido se desborde */
-  border-radius: 8px; /* Bordes redondeados para un aspecto moderno */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para profundidad */
-}
-
-#cartModal .modal-header {
-  background-color: #007bff; /* Color de fondo para la cabecera */
-  color: white; /* Texto blanco para contraste */
-  padding: 10px 20px; /* Espaciado interno */
-}
-
-#cartModal .modal-title {
-  font-weight: 600; /* Título en negrita */
-}
-
-#cartModal .modal-body {
-  padding: 20px; /* Espaciado interno */
-  max-height: 60vh; /* Altura máxima para evitar que el teclado lo tape */
-  overflow-y: auto; /* Permite desplazamiento si el contenido es muy largo */
-}
-
-#cartModal .cart-list {
-  list-style: none; /* Remueve estilos de lista por defecto */
-  padding: 0; /* Remueve el padding por defecto */
-}
-
-#cartModal .cart-item {
-  display: flex; /* Distribución en fila de los elementos del carrito */
-  align-items: center; /* Alineación vertical */
-  justify-content: space-between; /* Espaciado entre elementos */
-  margin-bottom: 15px; /* Espacio entre ítems del carrito */
-  border-bottom: 1px solid #eaeaea; /* Línea divisoria sutil */
-  padding-bottom: 10px; /* Espaciado al final de cada ítem */
-}
-
-#cartModal .cart-item-image {
-  width: 50px; /* Tamaño fijo para la imagen */
-  height: 50px; /* Tamaño fijo para la imagen */
-  object-fit: cover; /* Asegura que la imagen cubra el espacio asignado */
-  border-radius: 4px; /* Bordes redondeados para la imagen */
-  margin-right: 10px; /* Espacio a la derecha de la imagen */
-}
-
-#cartModal .cart-item-name {
-  flex-grow: 1; /* Permite que el nombre ocupe el espacio disponible */
-  margin-right: 10px; /* Espacio a la derecha del nombre */
-}
-
-#cartModal .cart-item-quantity {
-  display: flex; /* Distribución en fila de los botones de cantidad */
-  align-items: center; /* Alineación vertical */
-}
-
-#cartModal .cart-item-decrease,
-#cartModal .cart-item-increase {
-  background-color: #007bff; /* Color de fondo para los botones */
-  color: white; /* Texto blanco para contraste */
-  border: none; /* Remueve el borde por defecto */
-  padding: 5px 8px; /* Espaciado interno */
-  margin: 0 5px; /* Espacio entre botones */
-  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
-}
-
-#cartModal .cart-item-remove {
-  background-color: #dc3545; /* Color de fondo para el botón de eliminar */
-  color: white; /* Texto blanco para contraste */
-  border: none; /* Remueve el borde por defecto */
-  padding: 5px 8px; /* Espaciado interno */
-  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
-}
-
-#cartModal .cart-total,
-#cartModal #discount {
-  font-weight: 600; /* Texto en negrita para el total y descuento */
-  margin-top: 15px; /* Espacio antes del total y descuento */
-}
-
-#cartModal .modal-footer {
-  padding: 10px 20px; /* Espaciado interno */
-  background-color: #f8f9fa; /* Color de fondo suave */
-}
-
-#cartModal #checkoutCart {
-  background-color: #28a745; /* Color de fondo para el botón de finalizar compra */
-  color: white; /* Texto blanco para contraste */
-  border: none; /* Remueve el borde por defecto */
-  padding: 10px 20px; /* Espaciado interno */
-  cursor: pointer; /* Cursor en forma de mano al pasar sobre el botón */
-}
-
-/* Ajustes para dispositivos más grandes */
-@media (min-width: 768px) {
-  #cartModal .modal-dialog {
-    max-width: 50%; /* Ajusta el ancho máximo para tabletas y escritorio */
-  }
-}
 
 
 
